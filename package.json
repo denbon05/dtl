@@ -3,17 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "dev": "npx vite",
     "build": "run-p type-check \"build-only {@}\" --",
-    "preview": "vite preview",
-    "test:unit": "vitest",
-    "test:e2e": "playwright test",
+    "preview": "npx vite preview",
+    "test:unit": "npx vitest",
+    "test:e2e": "npx playwright test",
     "test": "npm run test:unit && npm run test:e2e",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
-    "format": "prettier --write src/",
-    "postinstall": "npx playwright install"
+    "build-only": "npx vite build",
+    "type-check": "npx vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "lint": "npx eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore",
+    "format": "npx prettier --write src/",
+    "postinstall": "npx playwright install --with-deps"
   },
   "license": "MIT",
   "repository": {

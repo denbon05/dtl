@@ -1,13 +1,45 @@
 <!doctype html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/favicon.ico" />
+    <title>Usługi Sprzątania</title>
+    <link rel="icon" href="/favicon.svg" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>dtl</title>
+    <meta
+      name="description"
+      content="Profesjonalne usługi sprzątania w Twoim regionie. Skorzystaj z naszych usług, aby cieszyć się czystym domem."
+    />
+    <meta property="og:title" content="Usługi Sprzątania" />
+    <meta
+      property="og:description"
+      content="Profesjonalne usługi sprzątania w Twoim regionie."
+    />
+    <!-- <meta property="og:image" content="https://dtl.works/og-image.jpg" /> -->
+    <meta
+      name="keywords"
+      content="usługi sprzątania, firma sprzątająca, czyszczenie domu, Bielsko-Biała, 43-300"
+    />
   </head>
   <body>
     <div id="app"></div>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "name": "DTL",
+        "description": "Profesjonalne usługi sprzątania w Twoim regionie.",
+        "url": "https://dtl.works/",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Bielsko-Biała",
+          "addressLocality": "Bielsko-Biała",
+          "addressRegion": "Śląskie",
+          "postalCode": "43-300",
+          "addressCountry": "Polska"
+        },
+        "telephone": "+48576471155"
+      }
+    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

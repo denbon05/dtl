@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import AppFooter from './components/AppFooter.vue';
+import AppBar from './components/common/AppBar.vue';
+import AppFooter from './components/common/AppFooter.vue';
 </script>
 
 <template>
-  <v-app>
-    <v-app-bar>
-      <template #prepend><h3>DTL</h3></template>
-    </v-app-bar>
+  <v-layout>
+    <v-app>
+      <AppBar />
 
-    <v-main> <RouterView /> </v-main>
+      <v-main> <RouterView /> </v-main>
 
-    <AppFooter />
-  </v-app>
+      <AppFooter />
+    </v-app>
+  </v-layout>
 </template>
 
 <style></style>

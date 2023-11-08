@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  ci:
+  run-checks:
     timeout-minutes: 60
     runs-on: ${{ matrix.os }}
 
@@ -42,9 +42,6 @@ jobs:
 
       - name: Run linter 👀
         run: npm run lint
-
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
 
       - name: Run E2E tests
         run: npm run test:e2e
