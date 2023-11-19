@@ -1,6 +1,7 @@
 import vuetify from '@/plugins/vuetify';
-// override vuetify styles
-import './assets/main.css';
+import rollbar from './plugins/rollbar';
+import i18n from './plugins/i18n';
+import '@/styles/main.scss';
 
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -10,5 +11,7 @@ const app = createApp(App);
 
 app.use(router);
 app.use(vuetify);
+app.use(rollbar);
+app.use(i18n);
 
 app.mount('#app');
