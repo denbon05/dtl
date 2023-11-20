@@ -4,9 +4,9 @@ import type { CalcCategoryItem } from '@/types/calc';
 import { reactive } from 'vue';
 
 const roomTypeByKey = reactive<CalcCategoryItem<'roomType'>>({
-  bathroom: { selected: false, title: 'Łazienka' },
-  room: { selected: false, title: 'Pokój' },
-  kitchen: { selected: false, title: 'Kuchnia' },
+  bathroom: { selected: false },
+  room: { selected: false },
+  kitchen: { selected: false },
 });
 
 const emit = defineEmits<{
@@ -30,7 +30,7 @@ const selectRoomType = (key: keyof IRoomType) => {
         :key="`room-${roomTypeKey}`"
         class="text-no-wrap flex-0-1"
         hide-details
-        :label="roomType.title"
+        :label="$t(`service.room.${roomTypeKey}`)"
         :value="roomTypeKey"
         v-model="roomType.selected"
         @click="selectRoomType(roomTypeKey)"

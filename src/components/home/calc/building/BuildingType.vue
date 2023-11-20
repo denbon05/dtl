@@ -1,27 +1,26 @@
 <script setup lang="ts">
-import type { IBuildingCoefficient } from '@/types/api/pricelist';
+import type { IServiceCoefficient } from '@/types/api/pricelist';
 import type { CalcCategoryItem } from '@/types/calc';
 import { reactive } from 'vue';
 import BuildingTypeSection from './BuildingTypeSection.vue';
 
 const buildingTypes = reactive<
-  Required<CalcCategoryItem<'buildingCoefficient'>>
+  Required<CalcCategoryItem<'serviceCoefficient'>>
 >({
-  condo: { selected: false, title: 'Sprzątanie mieszkania', icon: 'apartment' },
-  house: { selected: false, title: 'Sprzątanie budynku', icon: 'house' },
+  condo: { selected: false, icon: 'apartment' },
   office: {
     selected: false,
-    title: 'Sprzątanie biura',
     icon: 'mdi:mdi-chair-rolling',
   },
+  afterRepair: { selected: false, icon: 'construction' },
 });
 
 const emit = defineEmits<{
-  (e: 'select', key: keyof IBuildingCoefficient): void;
+  (e: 'select', key: keyof IServiceCoefficient): void;
 }>();
 
 const selectBuildingType = (
-  buildingTypeCoeffKey: keyof IBuildingCoefficient
+  buildingTypeCoeffKey: keyof IServiceCoefficient
 ) => {
   // select service with traversed key
   buildingTypes[buildingTypeCoeffKey].selected = true;
@@ -52,7 +51,7 @@ const selectBuildingType = (
         @select="selectBuildingType(buildingTypeKey)"
         :icon="buildingType.icon!"
       >
-        {{ buildingType.title }}
+        {{ $t(`service.building.${buildingTypeKey}`) }}
       </BuildingTypeSection>
     </div>
   </div>

@@ -15,6 +15,10 @@ export default {
     },
     order: {
       title: 'Zamówienie',
+      subtitle:
+        'Sprzątanie mieszkania składające z 1 pokoju i 1 łazienki, kuchni i przedpokoju',
+      roomAfterRepair: 'Obszar pomieszczenia',
+      emptyRoom: 'Puste pomieszczenie',
       service: 'Rodzaj usługi',
       cleaning: 'Rodzaj czyszczenia',
       room: 'Rodzaj pomieszczenia',
@@ -31,13 +35,12 @@ export default {
   service: {
     building: {
       condo: 'Sprzątanie mieszkania',
-      house: 'Sprzątanie budynku',
+      afterRepair: 'Sprzątanie po remoncie',
       office: 'Sprzątanie biura',
     },
     cleaning: {
       basic: 'Podstawowe',
       accurate: 'Dokładne',
-      afterRepair: 'Po remoncie',
     },
     room: {
       bathroom: 'Łazienka',
@@ -50,20 +53,13 @@ export default {
       kitchenCabinetCleaning: 'mycie szafek kuchennych',
       balconyCleaning: 'mycie balkonów',
       refrigeratorCleaning: 'lodówka',
-      furnitureCleaning: 'mycie mebli w pokojach',
-      doorCleaning: 'mycie drzwi',
+      radiatorCleaning: 'cyszczenie kaloryferów',
+      coffeeMachineCleaning: 'mycie ekspresu',
       dishwasherCleaning: 'zmywarka',
-      trashTakingOut: 'wynoszenie śmieci',
+      kitchenHoodCleaning: 'wynoszenie śmieci',
       dishesCleaning: 'mycie naczyń',
       microwaveCleaning: 'mikrofalówka',
       ironing: 'prasowanie',
-      kitchenHoodCleaning: 'wynoszenie śmieci',
-      baseboardCleaning: 'mycie listwy przypodłogowej',
-      wallCleaning: 'ściany i płytki',
-      rollerBlindsCleaning: 'czyszczenie rolet',
-    },
-    extraInfo: {
-      veryDirty: 'bardzo zabrudzone',
     },
   },
 };

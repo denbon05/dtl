@@ -4,41 +4,61 @@ import { reactive, ref } from 'vue';
 
 const pricelistByKey = reactive<PriceListByKey>({
   // default values
-  buildingCoefficient: {
+  serviceCoefficient: {
     condo: 1,
-    house: 1.4,
-    office: 0,
+    afterRepair: 1.4,
+    office: 1,
   },
   cleaningCoefficient: {
     basic: 1,
     accurate: 1.2,
-    afterRepair: 1.5,
   },
   roomType: {
     bathroom: 150,
     room: 100,
     kitchen: 150,
   },
-  additionalService: {
-    windowCleaning: 50,
-    ovenCleaning: 50,
-    kitchenCabinetCleaning: 60,
-    balconyCleaning: 40,
-    refrigeratorCleaning: 40,
-    furnitureCleaning: 50,
-    doorCleaning: 30,
-    dishwasherCleaning: 40,
-    trashTakingOut: 10,
-    dishesCleaning: 20,
-    microwaveCleaning: 25,
-    ironing: 50,
-    kitchenHoodCleaning: 50,
-    baseboardCleaning: 20,
-    wallCleaning: 35,
-    rollerBlindsCleaning: 30,
+  square: {
+    emptyRoom: 5,
+    roomAfterRepair: 10,
   },
-  extra: {
-    veryDirtyCoefficient: 1.2,
+  additionalService: {
+    windowCleaning: {
+      price: 25,
+    },
+    ovenCleaning: {
+      price: 50,
+    },
+    kitchenCabinetCleaning: {
+      price: 10,
+    },
+    balconyCleaning: {
+      price: 60,
+    },
+    refrigeratorCleaning: {
+      price: 50,
+    },
+    radiatorCleaning: {
+      price: 20,
+    },
+    coffeeMachineCleaning: {
+      price: 25,
+    },
+    dishwasherCleaning: {
+      price: 40,
+    },
+    kitchenHoodCleaning: {
+      price: 45,
+    },
+    dishesCleaning: {
+      price: 30,
+    },
+    microwaveCleaning: {
+      price: 30,
+    },
+    ironing: {
+      price: 50,
+    },
   },
 });
 

@@ -1,23 +1,23 @@
 <script setup lang="ts">
 import type {
   IAdditionalService,
-  IBuildingCoefficient,
   ICleaningCoefficient,
   IRoomType,
+  IServiceCoefficient,
 } from '@/types/api/pricelist';
-import OrderBill from './order/OrderBill.vue';
+import type { CalcSelectedOpts } from '@/types/calc';
+import { computed, reactive } from 'vue';
 import BuildingType from './building/BuildingType.vue';
 import CleaningType from './cleaning/CleaningType.vue';
+import OrderBill from './order/OrderBill.vue';
 import RoomType from './room/RoomType.vue';
-import { reactive } from 'vue';
-import type { CalcSelectedOpts } from '@/types/calc';
 
 const selectedOptions = reactive<CalcSelectedOpts>({
   rooms: [],
   additionalServices: [],
 });
 
-const setBuildingType = (buildingCoeffKey: keyof IBuildingCoefficient) => {
+const setBuildingType = (buildingCoeffKey: keyof IServiceCoefficient) => {
   console.log('setBuildingType', buildingCoeffKey);
   selectedOptions.service = buildingCoeffKey;
 };
@@ -42,6 +42,14 @@ const setAdditionalService = (
 ) => {
   console.log('setAdditionalService', additionalServiceKey);
 };
+
+const isCondoSelected = computed(() => selectedOptions.service === 'condo');
+const isSquareBillMode = computed(
+  () => !!selectedOptions.service && selectedOptions.service !== 'condo'
+);
+const shouldAdditionalServicesBeAllowed = computed(
+  () => !!selectedOptions.service && selectedOptions.service !== 'afterRepair'
+);
 </script>
 
 <template>
@@ -69,7 +77,15 @@ const setAdditionalService = (
     </v-col>
 
     <v-col cols="4" lg="3" class="px-5"
-      ><OrderBill :opts="selectedOptions" />
+      ><OrderBill
+        :opts="selectedOptions"
+        :isSquareMode="isSquareBillMode"
+        :shouldAdditionalServicesBeAllowed="shouldAdditionalServicesBeAllowed"
+      >
+        <template v-if="isCondoSelected" #subtitle>{{
+          $t('calc.order.subtitle')
+        }}</template>
+      </OrderBill>
     </v-col>
   </v-row>
 </template>

@@ -3,9 +3,8 @@ import type { ICleaningCoefficient } from '@/types/api/pricelist';
 import type { CalcCategoryItem } from '@/types/calc';
 
 const cleaningTypeByKey: CalcCategoryItem<'cleaningCoefficient'> = {
-  basic: { selected: false, title: 'Podstawowe' },
-  accurate: { selected: false, title: 'Dokładne' },
-  afterRepair: { selected: false, title: 'Po naprawie' },
+  basic: { selected: false },
+  accurate: { selected: false },
 };
 
 const emit = defineEmits<{
@@ -28,7 +27,7 @@ const selectCleaningType = (cleaningKey: keyof ICleaningCoefficient) => {
         v-for="(cleaningType, cleaningTypeKey) of cleaningTypeByKey"
         :key="`cleaning-${cleaningTypeKey}`"
         class="text-no-wrap flex-0-1"
-        :label="cleaningType.title"
+        :label="$t(`service.cleaning.${cleaningTypeKey}`)"
         :value="cleaningTypeKey"
       >
       </v-radio>
@@ -39,6 +38,6 @@ const selectCleaningType = (cleaningKey: keyof ICleaningCoefficient) => {
 <style lang="scss">
 .v-input__control > .v-selection-control-group--inline {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 </style>

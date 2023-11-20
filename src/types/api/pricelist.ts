@@ -1,13 +1,12 @@
-export interface IBuildingCoefficient {
+export interface IServiceCoefficient {
   condo: number;
-  house: number;
   office: number;
+  afterRepair: number;
 }
 
 export interface ICleaningCoefficient {
   basic: number;
   accurate: number;
-  afterRepair: number;
 }
 
 export interface IRoomType {
@@ -17,32 +16,21 @@ export interface IRoomType {
 }
 
 export interface IAdditionalService {
-  windowCleaning: number;
-  ovenCleaning: number;
-  kitchenCabinetCleaning: number;
-  balconyCleaning: number;
-  refrigeratorCleaning: number;
-  furnitureCleaning: number;
-  doorCleaning: number;
-  dishwasherCleaning: number;
-  trashTakingOut: number;
-  dishesCleaning: number;
-  kitchenHoodCleaning: number;
-  microwaveCleaning: number;
-  ironing: number;
-  baseboardCleaning: number;
-  wallCleaning: number;
-  rollerBlindsCleaning: number;
+  [key: string]: {
+    price: number;
+    title?: string;
+  };
 }
 
-export interface IExtraOptions {
-  veryDirtyCoefficient: number;
+export interface ISquarePrice {
+  emptyRoom: number;
+  roomAfterRepair: number;
 }
 
 export type PriceListByKey = {
-  buildingCoefficient: IBuildingCoefficient;
+  serviceCoefficient: IServiceCoefficient;
   cleaningCoefficient: ICleaningCoefficient;
+  square: ISquarePrice;
   roomType: IRoomType;
   additionalService: IAdditionalService;
-  extra: IExtraOptions;
 };

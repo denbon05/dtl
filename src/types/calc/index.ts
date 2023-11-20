@@ -1,8 +1,8 @@
 import type {
   IAdditionalService,
-  IBuildingCoefficient,
   ICleaningCoefficient,
   IRoomType,
+  IServiceCoefficient,
   PriceListByKey,
 } from '../api/pricelist';
 
@@ -13,15 +13,13 @@ export type CalcCategoryItem<
   K,
   {
     selected: boolean;
-    title: string;
     icon?: string;
   }
 >;
 
 export type CalcSelectedOpts = {
-  service?: keyof IBuildingCoefficient;
+  service?: keyof IServiceCoefficient;
   cleaning?: keyof ICleaningCoefficient;
   rooms: (keyof IRoomType)[];
   additionalServices: (keyof IAdditionalService)[];
-  isVeryDirty?: boolean;
 };
