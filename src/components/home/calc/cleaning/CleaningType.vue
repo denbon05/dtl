@@ -7,6 +7,10 @@ const cleaningTypeByKey: CalcCategoryItem<'cleaningCoefficient'> = {
   accurate: { selected: false },
 };
 
+const props = defineProps<{
+  enabled: boolean;
+}>();
+
 const emit = defineEmits<{
   (e: 'select', key: keyof ICleaningCoefficient): void;
 }>();
@@ -14,15 +18,28 @@ const emit = defineEmits<{
 const selectCleaningType = (cleaningKey: keyof ICleaningCoefficient) => {
   emit('select', cleaningKey);
 };
+
+// setInterval(() => {
+//   console.log('calc.state.value', props.calcState);
+// }, 2000);
 </script>
 
 <template>
   <div id="cleaningType">
-    <v-sheet rounded class="calc-title mt-5 mb-3">
+    <v-sheet
+      :color="enabled ? '' : 'disabled'"
+      rounded
+      class="calc-title mt-5 mb-3"
+    >
       <h3>{{ $t('calc.subtitle.cleaning') }}</h3>
     </v-sheet>
 
-    <v-radio-group @update:modelValue="selectCleaningType" inline hide-details>
+    <v-radio-group
+      v-if="enabled"
+      @update:modelValue="selectCleaningType"
+      inline
+      hide-details
+    >
       <v-radio
         v-for="(cleaningType, cleaningTypeKey) of cleaningTypeByKey"
         :key="`cleaning-${cleaningTypeKey}`"

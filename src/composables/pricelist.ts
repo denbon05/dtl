@@ -2,7 +2,10 @@ import { fetchPriceList } from '@/api/pricelist';
 import type { PriceListByKey } from '@/types/api/pricelist';
 import { reactive, ref } from 'vue';
 
-const pricelistByKey = reactive<PriceListByKey>({
+export const pricelistByKey = reactive<PriceListByKey>({
+  initial: {
+    cleaning: 200,
+  },
   // default values
   serviceCoefficient: {
     condo: 1,
@@ -64,6 +67,7 @@ const pricelistByKey = reactive<PriceListByKey>({
 
 const isPricelistLoading = ref(true);
 
+// GUI and logic of the calc use the fetched pricelist
 // TODO back off
 fetchPriceList()
   .then((fetchedPriceList) => {

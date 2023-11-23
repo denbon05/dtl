@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useCalcState } from '@/composables/calc';
 import type {
   IAdditionalService,
   ICleaningCoefficient,
@@ -6,24 +7,29 @@ import type {
   IServiceCoefficient,
 } from '@/types/api/pricelist';
 import type { CalcSelectedOpts } from '@/types/calc';
-import { computed, reactive } from 'vue';
+import { reactive } from 'vue';
 import BuildingType from './building/BuildingType.vue';
 import CleaningType from './cleaning/CleaningType.vue';
 import OrderBill from './order/OrderBill.vue';
 import RoomType from './room/RoomType.vue';
+import AdditionalServices from './additional/AdditionalServices.vue';
 
 const selectedOptions = reactive<CalcSelectedOpts>({
   rooms: [],
   additionalServices: [],
 });
 
+const calc = useCalcState();
+
 const setBuildingType = (buildingCoeffKey: keyof IServiceCoefficient) => {
-  console.log('setBuildingType', buildingCoeffKey);
   selectedOptions.service = buildingCoeffKey;
+  calc.send('SET_SERVICE', { key: buildingCoeffKey });
 };
 const setCleaningType = (cleaningCoeffKey: keyof ICleaningCoefficient) => {
-  console.log('setCleaningType', cleaningCoeffKey);
   selectedOptions.cleaning = cleaningCoeffKey;
+  // depending on the room type cleaning services change
+  calc.send('SET_CLEANING_TYPE', { key: cleaningCoeffKey });
+  calc.send('SET_CLEANING_TYPE', { key: cleaningCoeffKey });
 };
 const setRoomType = (roomTypeKey: keyof IRoomType) => {
   console.log('setRoomType', roomTypeKey);
@@ -42,14 +48,6 @@ const setAdditionalService = (
 ) => {
   console.log('setAdditionalService', additionalServiceKey);
 };
-
-const isCondoSelected = computed(() => selectedOptions.service === 'condo');
-const isSquareBillMode = computed(
-  () => !!selectedOptions.service && selectedOptions.service !== 'condo'
-);
-const shouldAdditionalServicesBeAllowed = computed(
-  () => !!selectedOptions.service && selectedOptions.service !== 'afterRepair'
-);
 </script>
 
 <template>
@@ -71,20 +69,38 @@ const shouldAdditionalServicesBeAllowed = computed(
     ><v-col cols="7" lg="5" class="px-5">
       <section id="servicesCalc" class="d-flex flex-column text-center">
         <BuildingType @select="setBuildingType" />
-        <CleaningType @select="setCleaningType" />
-        <RoomType @select="setRoomType" />
+        <CleaningType
+          :calc-state="calc.state.value.value"
+          :enabled="calc.state.value.context.isCleaningSectionEnabled"
+          @select="setCleaningType"
+        />
+        <RoomType
+          :enabled="
+            calc.state.value.context.isRoomSectionEnabled &&
+            !!selectedOptions.cleaning
+          "
+          :all-room-are-selected="
+            calc.state.value.context.shouldAllRoomsBeSelected
+          "
+          @select="setRoomType"
+        />
+        <AdditionalServices
+          :enabled="
+            calc.state.value.context.isAdditionalSectionEnabled &&
+            !!selectedOptions.cleaning
+          "
+          :calc="calc"
+        />
       </section>
     </v-col>
 
     <v-col cols="4" lg="3" class="px-5"
-      ><OrderBill
-        :opts="selectedOptions"
-        :isSquareMode="isSquareBillMode"
-        :shouldAdditionalServicesBeAllowed="shouldAdditionalServicesBeAllowed"
-      >
-        <template v-if="isCondoSelected" #subtitle>{{
-          $t('calc.order.subtitle')
-        }}</template>
+      ><OrderBill :opts="selectedOptions" :calc="calc">
+        <template
+          v-if="calc.state.value.context.selectedBuildingType === 'condo'"
+          #subtitle
+          >{{ $t('calc.order.subtitle') }}</template
+        >
       </OrderBill>
     </v-col>
   </v-row>

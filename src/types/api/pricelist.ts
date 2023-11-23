@@ -27,7 +27,12 @@ export interface ISquarePrice {
   roomAfterRepair: number;
 }
 
+export interface IInitial {
+  cleaning: number;
+}
+
 export type PriceListByKey = {
+  initial: IInitial;
   serviceCoefficient: IServiceCoefficient;
   cleaningCoefficient: ICleaningCoefficient;
   square: ISquarePrice;
