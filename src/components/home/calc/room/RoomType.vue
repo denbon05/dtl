@@ -21,7 +21,6 @@ const emit = defineEmits<{
 watch(
   () => props.allRoomAreSelected,
   (areSelected) => {
-    console.log('areSelected', areSelected);
     if (areSelected) {
       (Object.keys(roomTypeByKey) as (keyof typeof roomTypeByKey)[]).forEach(
         (key) => {

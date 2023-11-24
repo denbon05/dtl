@@ -9,9 +9,15 @@ import router from './router';
 
 const app = createApp(App);
 
+const isProdMode = import.meta.env.PROD;
+
 app.use(router);
 app.use(vuetify);
-app.use(rollbar);
 app.use(i18n);
+
+if (isProdMode) {
+  // monitor app in prod only
+  app.use(rollbar);
+}
 
 app.mount('#app');

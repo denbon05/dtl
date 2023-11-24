@@ -6,6 +6,7 @@ import { computed, reactive, toValue } from 'vue';
 import { useI18n } from 'vue-i18n';
 import RoomManager from './RoomManager.vue';
 import SquareManager from './SquareManager.vue';
+import AdditionalServices from './AdditionalServices.vue';
 import { useOrderState } from '@/composables/order';
 import type { useCalcState } from '@/composables/calc';
 import { watch } from 'vue';
@@ -108,7 +109,7 @@ watch(
         </h4>
 
         <!-- Show dashed line in case no additional services -->
-        <hr v-if="!opts.additionalServices.length" class="border-dashed" />
+        <AdditionalServices :order="order" />
 
         <h4 class="text-subtitle-1 mt-4">{{ $t('calc.order.sum.title') }}:</h4>
         <h4 class="text-subtitle-1">

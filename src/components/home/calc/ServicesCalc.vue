@@ -7,7 +7,7 @@ import type {
   IServiceCoefficient,
 } from '@/types/api/pricelist';
 import type { CalcSelectedOpts } from '@/types/calc';
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 import BuildingType from './building/BuildingType.vue';
 import CleaningType from './cleaning/CleaningType.vue';
 import OrderBill from './order/OrderBill.vue';
@@ -20,6 +20,8 @@ const selectedOptions = reactive<CalcSelectedOpts>({
 });
 
 const calc = useCalcState();
+const additionalServicesComponent =
+  ref<InstanceType<typeof AdditionalServices>>();
 
 const setBuildingType = (buildingCoeffKey: keyof IServiceCoefficient) => {
   selectedOptions.service = buildingCoeffKey;
@@ -29,7 +31,8 @@ const setCleaningType = (cleaningCoeffKey: keyof ICleaningCoefficient) => {
   selectedOptions.cleaning = cleaningCoeffKey;
   // depending on the room type cleaning services change
   calc.send('SET_CLEANING_TYPE', { key: cleaningCoeffKey });
-  calc.send('SET_CLEANING_TYPE', { key: cleaningCoeffKey });
+  // reset additional services
+  additionalServicesComponent.value?.resetSelected();
 };
 const setRoomType = (roomTypeKey: keyof IRoomType) => {
   console.log('setRoomType', roomTypeKey);
@@ -85,6 +88,7 @@ const setAdditionalService = (
           @select="setRoomType"
         />
         <AdditionalServices
+          ref="additionalServicesComponent"
           :enabled="
             calc.state.value.context.isAdditionalSectionEnabled &&
             !!selectedOptions.cleaning

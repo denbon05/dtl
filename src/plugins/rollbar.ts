@@ -15,19 +15,14 @@ const rollbar = new Rollbar({
   },
 });
 
-const isProdMode = import.meta.env.PROD;
-
 const rollbarPlugin: Plugin = {
   install(app) {
-    // monitor app in prod only
-    if (isProdMode) {
-      app.config.errorHandler = (err, vm, info) => {
-        rollbar.error(err as LogArgument, { vueComponent: vm, info });
-        console.error(err);
-      };
+    app.config.errorHandler = (err, vm, info) => {
+      rollbar.error(err as LogArgument, { vueComponent: vm, info });
+      console.error(err);
+    };
 
-      app.provide('rollbar', rollbar);
-    }
+    app.provide('rollbar', rollbar);
   },
 };
 

@@ -18,10 +18,6 @@ const emit = defineEmits<{
 const selectCleaningType = (cleaningKey: keyof ICleaningCoefficient) => {
   emit('select', cleaningKey);
 };
-
-// setInterval(() => {
-//   console.log('calc.state.value', props.calcState);
-// }, 2000);
 </script>
 
 <template>

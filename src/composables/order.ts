@@ -2,11 +2,17 @@ import { useMachine } from '@xstate/vue';
 import { createMachine } from 'xstate';
 import { pricelistByKey } from './pricelist';
 import { useCalcState } from './calc';
-import type { ICleaningCoefficient, IRoomType } from '@/types/api/pricelist';
+import type {
+  IAdditionalService,
+  ICleaningCoefficient,
+  IRoomType,
+} from '@/types/api/pricelist';
 
 export interface IOrderCtx {
   pricelistByKey: typeof pricelistByKey;
+  additionalServiceAmountByKey: Record<keyof IAdditionalService, number>;
   cleaningType: keyof ICleaningCoefficient | null;
+
   mainServicesPrice: number;
   additionalServicesPrice: number;
   totalPrice: number;
@@ -14,6 +20,16 @@ export interface IOrderCtx {
 
 const context: IOrderCtx = {
   pricelistByKey,
+  // initial additional services amount by key
+  additionalServiceAmountByKey: Object.keys(
+    pricelistByKey.additionalService
+  ).reduce<Record<keyof IAdditionalService, number>>(
+    (acc, key) => ({
+      ...acc,
+      [key]: 0,
+    }),
+    {}
+  ),
   cleaningType: null,
   mainServicesPrice: 0,
   additionalServicesPrice: 0,
@@ -24,6 +40,7 @@ const orderMachine = createMachine<IOrderCtx>(
   {
     predictableActionArguments: true,
     initial: 'inactive',
+    strict: true,
     states: {
       inactive: {
         on: {
@@ -48,13 +65,19 @@ const orderMachine = createMachine<IOrderCtx>(
             target: 'officeSelected',
           },
           SET_CLEANING_TYPE: {
-            actions: ['handleCleaningTypeSelection'],
+            actions: ['handleCleaningTypeSelection', 'resetAdditionalServices'],
           },
           ALTER_ROOM_BY_KEY: {
             actions: ['alterRoomByKey'],
           },
           UPDATE_ADDITIONAL_SERVICES: {
-            actions: ['computeAdditionalServicesPrice'],
+            actions: [
+              'computeAdditionalServicesPrice',
+              'computeAdditionalServiceAmount',
+            ],
+          },
+          UPDATE_ADDITIONAL_SERVICE_AMOUNT: {
+            actions: ['computeAdditionalServiceAmount'],
           },
         },
       },
@@ -111,7 +134,56 @@ const orderMachine = createMachine<IOrderCtx>(
           (ev.shouldIncrease ? roomPrice : -roomPrice) * cleaningCoeff;
       },
       computeAdditionalServicesPrice: (ctx, ev) => {
-        console.log('TODO', ev);
+        if (!ev.services?.length) {
+          // nothing selected, reset price
+          ctx.additionalServicesPrice = 0;
+          return;
+        }
+
+        const additionalServiceByKey = ctx.pricelistByKey.additionalService;
+        if (ev.services.length === 1) {
+          // extract one price
+          const [serviceKey] = ev.services;
+          const { price = 0 } = additionalServiceByKey[serviceKey];
+          ctx.additionalServicesPrice = price;
+          return;
+        }
+
+        ctx.additionalServicesPrice = ev.services
+          .map(
+            (key: keyof IAdditionalService): number =>
+              additionalServiceByKey[key].price
+          )
+          .reduce((aPrice: number, bPrice: number) => aPrice + bPrice);
+      },
+      computeAdditionalServiceAmount: (ctx, ev) => {
+        // console.log('computeAdditionalServiceAmount ctx', ctx);
+        // console.log('computeAdditionalServiceAmount ev', ev);
+        if (ev.type === 'UPDATE_ADDITIONAL_SERVICES') {
+          // `services` is a proxy with key as idx and value as actual service key
+          const selectedServiceKeys: (keyof IAdditionalService)[] =
+            Object.values(ev.services);
+          // instantiate selected additional services
+          selectedServiceKeys.forEach((key) => {
+            if (!ctx.additionalServiceAmountByKey[key]) {
+              // instantiate values
+              ctx.additionalServiceAmountByKey[key] = 1;
+            }
+          });
+          // reset the reset
+          Object.keys(ctx.additionalServiceAmountByKey)
+            .filter(
+              (ctxServiceKey) => !selectedServiceKeys.includes(ctxServiceKey)
+            )
+            .forEach((key) => {
+              ctx.additionalServiceAmountByKey[key] = 0;
+            });
+        }
+      },
+      resetAdditionalServices: (ctx) => {
+        Object.keys(ctx.additionalServiceAmountByKey).forEach((key) => {
+          ctx.additionalServiceAmountByKey[key] = 0;
+        });
       },
     },
   }
@@ -132,8 +204,11 @@ export const useOrderState = (
   order.service.subscribe(({ context, event }) => {
     // console.log('ORDER state changed', context);
     // console.log('ORDER state changed', event);
-    if (event.type === 'ALTER_ROOM_BY_KEY') {
-      // compute the total price
+    if (
+      event.type === 'ALTER_ROOM_BY_KEY' ||
+      event.type === 'UPDATE_ADDITIONAL_SERVICES'
+    ) {
+      // compute the total price of the services
       context.totalPrice =
         context.additionalServicesPrice + context.mainServicesPrice;
     }

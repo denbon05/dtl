@@ -38,6 +38,10 @@ const groupedServicesByRow = computed(() => {
 
 const selectedServices = ref<string[]>([]);
 
+defineExpose({
+  resetSelected: () => (selectedServices.value = []),
+});
+
 watch(
   () => selectedServices,
   (nextSelected) => {

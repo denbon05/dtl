@@ -32,11 +32,11 @@ export const calcMachine = createMachine<ICalc>(
         on: {
           SET_SERVICE: {
             actions: ['handleBuildingSelection'],
-            target: 'buildingSelected',
+            target: 'active',
           },
         },
       },
-      buildingSelected: {
+      active: {
         tags: ['enabledCleaningType'],
         on: {
           SET_ROOM_TYPE: {
@@ -97,9 +97,6 @@ export const calcMachine = createMachine<ICalc>(
 
 export const useCalcState = () => {
   const calc = useMachine(calcMachine);
-
-  // calc.service.subscribe((state) => {
-  // });
 
   return calc;
 };
