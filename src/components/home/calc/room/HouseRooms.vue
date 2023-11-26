@@ -2,11 +2,8 @@
 import type { useCalcState } from '@/composables/calc';
 import type { CalcCategoryItem } from '@/types/calc';
 import { computed, reactive, watch } from 'vue';
-import HouseRooms from './HouseRooms.vue';
-import RepairRooms from './RepairRooms.vue';
 
-const { enabled, calc } = defineProps<{
-  enabled: boolean;
+const { calc } = defineProps<{
   calc: ReturnType<typeof useCalcState>;
 }>();
 
@@ -41,27 +38,23 @@ watch(
     );
   }
 );
-
-const roomsComponent = computed(() => {
-  const { value: selectedBuildingService } = calc.state.value;
-
-  if (selectedBuildingService === 'afterRepairSelected') {
-    return RepairRooms;
-  }
-  return HouseRooms;
-});
 </script>
 
 <template>
-  <section id="roomType">
-    <v-sheet
-      :color="enabled ? '' : 'disabled'"
-      rounded
-      class="calc-title mt-5 mb-3"
-    >
-      <h3>{{ $t('calc.subtitle.room') }}</h3>
-    </v-sheet>
-
-    <component v-if="enabled" :calc="calc" :is="roomsComponent"></component>
+  <section id="houseRoomType">
+    <div class="d-flex justify-space-between">
+      <v-checkbox
+        v-for="(roomType, roomTypeKey) of roomTypeByKey"
+        :key="`room-${roomTypeKey}`"
+        class="text-no-wrap flex-0-1"
+        hide-details
+        :label="$t(`service.room.${roomTypeKey}`)"
+        :true-value="shouldAllRoomBeSelected"
+        :readonly="shouldAllRoomBeSelected"
+        :value="roomTypeKey"
+        :model-value="roomType.selected"
+      >
+      </v-checkbox>
+    </div>
   </section>
 </template>

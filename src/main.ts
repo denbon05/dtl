@@ -9,13 +9,13 @@ import router from './router';
 
 const app = createApp(App);
 
-const isProdMode = import.meta.env.PROD;
+const isMonitoringEnabled = Boolean(import.meta.env.VITE_MONITORING_ENABLED);
 
 app.use(router);
 app.use(vuetify);
 app.use(i18n);
 
-if (isProdMode) {
+if (isMonitoringEnabled) {
   // monitor app in prod only
   app.use(rollbar);
 }

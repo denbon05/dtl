@@ -1,61 +1,44 @@
 <script setup lang="ts">
 import { useCalcState } from '@/composables/calc';
-import type {
-  IAdditionalService,
-  ICleaningCoefficient,
-  IRoomType,
-  IServiceCoefficient,
-} from '@/types/api/pricelist';
-import type { CalcSelectedOpts } from '@/types/calc';
-import { reactive, ref } from 'vue';
+import { usePriceList } from '@/composables/pricelist';
+import { ref, watch } from 'vue';
+import AdditionalServices from './additional/AdditionalServices.vue';
 import BuildingType from './building/BuildingType.vue';
 import CleaningType from './cleaning/CleaningType.vue';
 import OrderBill from './order/OrderBill.vue';
 import RoomType from './room/RoomType.vue';
-import AdditionalServices from './additional/AdditionalServices.vue';
 
-const selectedOptions = reactive<CalcSelectedOpts>({
-  rooms: [],
-  additionalServices: [],
-});
+const { isPricelistLoading } = usePriceList();
 
-const calc = useCalcState();
-const additionalServicesComponent =
-  ref<InstanceType<typeof AdditionalServices>>();
-
-const setBuildingType = (buildingCoeffKey: keyof IServiceCoefficient) => {
-  selectedOptions.service = buildingCoeffKey;
-  calc.send('SET_SERVICE', { key: buildingCoeffKey });
-};
-const setCleaningType = (cleaningCoeffKey: keyof ICleaningCoefficient) => {
-  selectedOptions.cleaning = cleaningCoeffKey;
-  // depending on the room type cleaning services change
-  calc.send('SET_CLEANING_TYPE', { key: cleaningCoeffKey });
+const resetCalc = () => {
   // reset additional services
   additionalServicesComponent.value?.resetSelected();
 };
-const setRoomType = (roomTypeKey: keyof IRoomType) => {
-  console.log('setRoomType', roomTypeKey);
-  if (selectedOptions.rooms.includes(roomTypeKey)) {
-    // toggle to unselected
-    selectedOptions.rooms = selectedOptions.rooms.filter(
-      (key) => key !== roomTypeKey
-    );
-    return;
-  }
 
-  selectedOptions.rooms.push(roomTypeKey);
-};
-const setAdditionalService = (
-  additionalServiceKey: keyof IAdditionalService
-) => {
-  console.log('setAdditionalService', additionalServiceKey);
-};
+const calc = useCalcState();
+
+watch(
+  () => calc.state.value.value,
+  () => {
+    // reset if building service type changed
+    resetCalc();
+  }
+);
+watch(
+  () => calc.state.value.context.cleaningType,
+  () => {
+    // reset if cleaning service type changed
+    resetCalc();
+  }
+);
+
+const additionalServicesComponent =
+  ref<InstanceType<typeof AdditionalServices>>();
 </script>
 
 <template>
   <v-row justify="center">
-    <v-col cols="11" lg="8" class="text-center px-5">
+    <v-col lg="9" xl="7" class="text-center px-5">
       <h1 class="mt-8 mb-5" id="calcTitle">{{ $t('calc.title') }}</h1>
       <p class="text-subtitle-1 text-left">
         {{
@@ -68,43 +51,31 @@ const setAdditionalService = (
     </v-col>
   </v-row>
 
-  <v-row justify="center" class="mt-4"
-    ><v-col cols="7" lg="5" class="px-5">
+  <v-row v-if="!isPricelistLoading" justify="center" class="mt-4"
+    ><v-col lg="5" xl="4" class="px-5">
       <section id="servicesCalc" class="d-flex flex-column text-center">
-        <BuildingType @select="setBuildingType" />
+        <BuildingType :calc="calc" />
         <CleaningType
-          :calc-state="calc.state.value.value"
+          :calc="calc"
           :enabled="calc.state.value.context.isCleaningSectionEnabled"
-          @select="setCleaningType"
         />
         <RoomType
-          :enabled="
-            calc.state.value.context.isRoomSectionEnabled &&
-            !!selectedOptions.cleaning
-          "
-          :all-room-are-selected="
-            calc.state.value.context.shouldAllRoomsBeSelected
-          "
-          @select="setRoomType"
+          :enabled="calc.state.value.context.isRoomSectionEnabled"
+          :calc="calc"
         />
         <AdditionalServices
           ref="additionalServicesComponent"
-          :enabled="
-            calc.state.value.context.isAdditionalSectionEnabled &&
-            !!selectedOptions.cleaning
-          "
+          :enabled="calc.state.value.context.isAdditionalSectionEnabled"
           :calc="calc"
         />
       </section>
     </v-col>
 
-    <v-col cols="4" lg="3" class="px-5"
-      ><OrderBill :opts="selectedOptions" :calc="calc">
-        <template
-          v-if="calc.state.value.context.selectedBuildingType === 'condo'"
-          #subtitle
-          >{{ $t('calc.order.subtitle') }}</template
-        >
+    <v-col lg="4" xl="3" class="px-5 pl-lg-5"
+      ><OrderBill :calc="calc">
+        <template v-if="calc.state.value.value === 'condoSelected'" #subtitle>{{
+          $t('calc.order.subtitle')
+        }}</template>
       </OrderBill>
     </v-col>
   </v-row>

@@ -17,8 +17,10 @@ export default {
       title: 'Zamówienie',
       subtitle:
         'Sprzątanie mieszkania składające z 1 pokoju i 1 łazienki, kuchni i przedpokoju',
-      roomAfterRepair: 'Obszar pomieszczenia',
-      emptyRoom: 'Puste pomieszczenie',
+      square: 'Obszar pomieszczenia',
+      office: 'Sprzątanie biura',
+      empty: 'Puste pomieszczenie',
+      withFurniture: 'Pomieszczenie z meblami',
       service: 'Rodzaj usługi',
       cleaning: 'Rodzaj czyszczenia',
       room: 'Rodzaj pomieszczenia',
@@ -46,6 +48,8 @@ export default {
       bathroom: 'Łazienka',
       room: 'Pokój',
       kitchen: 'Kuchnia',
+      empty: 'Puste pomieszczenie',
+      withFurniture: 'Pomieszczenie z meblami',
     },
     additionalService: {
       windowCleaning: 'mycie okien',

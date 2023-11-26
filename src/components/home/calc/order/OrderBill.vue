@@ -1,60 +1,34 @@
 <script setup lang="ts">
+import type { useCalcState } from '@/composables/calc';
+import { useOrderState } from '@/composables/order';
 import { usePriceList } from '@/composables/pricelist';
-import type { IRoomType } from '@/types/api/pricelist';
-import type { CalcSelectedOpts } from '@/types/calc';
-import { computed, reactive, toValue } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
+import AdditionalServices from './AdditionalServices.vue';
 import RoomManager from './RoomManager.vue';
 import SquareManager from './SquareManager.vue';
-import AdditionalServices from './AdditionalServices.vue';
-import { useOrderState } from '@/composables/order';
-import type { useCalcState } from '@/composables/calc';
-import { watch } from 'vue';
 
-const { opts, calc } = defineProps<{
-  opts: CalcSelectedOpts;
+const { calc } = defineProps<{
   calc: ReturnType<typeof useCalcState>;
 }>();
 
-const { pricelistByKey, isPricelistLoading } = usePriceList();
+const { pricelistByKey } = usePriceList();
 const order = useOrderState(calc, pricelistByKey);
 
 const { t } = useI18n();
 
-const serviceTitle = computed(() =>
-  // if service type is chosen show what chosen in oder case show title
-  opts.service ? t(`service.building.${opts.service}`) : t('calc.order.service')
-);
-const cleaningTitle = computed(() =>
-  // if cleaning type is chosen show what chosen in oder case show title
-  opts.cleaning
-    ? t(`service.cleaning.${opts.cleaning}`)
-    : t('calc.order.cleaning')
-);
-
-const roomAmountByKey = reactive<Record<keyof IRoomType, number>>({
-  // initial values
-  bathroom: 1,
-  kitchen: 1,
-  room: 1,
+const serviceTitle = computed(() => {
+  // if service type is selected show it in oder case show default title
+  const { tags, value } = order.state.value;
+  const shouldServiceTitleBeVisible = tags.has('actualTitles');
+  const i18Key = (value as string).replace('Selected', '');
+  return shouldServiceTitleBeVisible
+    ? t(`service.building.${i18Key}`)
+    : t('calc.order.service');
 });
 
-const changeRoomAmount = (key: keyof IRoomType, shouldIncrease = true) => {
-  roomAmountByKey[key] = roomAmountByKey[key] + (shouldIncrease ? 1 : -1);
-  // compute the price
-  order.send('ALTER_ROOM_BY_KEY', { key, shouldIncrease });
-};
-
-const areRoomsSelected = computed(() => !!opts.rooms.length);
-
-watch(
-  () => opts.cleaning,
-  () => {
-    // toggle the cleaning type resets visible rooms amount
-    (Object.keys(roomAmountByKey) as (keyof IRoomType)[]).forEach((key) => {
-      roomAmountByKey[key] = 1;
-    });
-  }
+const areRoomsSelected = computed(
+  () => calc.state.value.context.shouldAllRoomsBeSelected
 );
 </script>
 
@@ -62,7 +36,7 @@ watch(
   <v-sheet id="servicesOrder" border="green" rounded class="py-5 px-3">
     <section class="d-flex flex-column text-center">
       <h2>{{ $t('calc.order.title') }}</h2>
-      <span class="my-3 text-caption text-medium-emphasis">
+      <span class="my-3 mx-2 text-caption text-medium-emphasis">
         <slot name="subtitle"></slot
       ></span>
 
@@ -70,23 +44,11 @@ watch(
         <h4 class="text-subtitle-1">{{ serviceTitle }}</h4>
 
         <template v-if="order.state.value.tags.has('squareMode')">
-          <SquareManager
-            :is-empty-room="order.state.value.tags.has('afterRepair')"
-          ></SquareManager>
+          <SquareManager :order="order" :calc="calc"></SquareManager>
         </template>
         <template v-else>
-          <h4 class="text-subtitle-1 d-flex justify-space-between">
-            <span>{{ cleaningTitle }}</span>
-            <span v-if="calc.state.value.context.shouldCleaningBeAccurate"
-              >x{{ pricelistByKey.cleaningCoefficient.accurate }}</span
-            >
-          </h4>
           <!-- There are selected rooms - show options -->
-          <RoomManager
-            v-if="areRoomsSelected"
-            @change-room-amount="changeRoomAmount"
-            :room-amount-by-key="roomAmountByKey"
-          ></RoomManager>
+          <RoomManager v-if="areRoomsSelected" :order="order"></RoomManager>
           <!-- Show room title if there are no selected ones -->
           <h4 v-else class="text-subtitle-1">
             {{ $t('calc.order.room') }}

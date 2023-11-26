@@ -3,6 +3,7 @@ import type { IServiceCoefficient } from '@/types/api/pricelist';
 import type { CalcCategoryItem } from '@/types/calc';
 import { reactive } from 'vue';
 import BuildingTypeSection from './BuildingTypeSection.vue';
+import type { useCalcState } from '@/composables/calc';
 
 const buildingTypes = reactive<
   Required<CalcCategoryItem<'serviceCoefficient'>>
@@ -15,22 +16,31 @@ const buildingTypes = reactive<
   afterRepair: { selected: false, icon: 'construction' },
 });
 
-const emit = defineEmits<{
-  (e: 'select', key: keyof IServiceCoefficient): void;
-}>();
+const { calc } = defineProps<{ calc: ReturnType<typeof useCalcState> }>();
 
-const selectBuildingType = (
-  buildingTypeCoeffKey: keyof IServiceCoefficient
-) => {
+const selectBuildingType = (buildingTypeKey: keyof IServiceCoefficient) => {
   // select service with traversed key
-  buildingTypes[buildingTypeCoeffKey].selected = true;
+  buildingTypes[buildingTypeKey].selected = true;
   // unselect the rest
   (Object.keys(buildingTypes) as (keyof typeof buildingTypes)[])
-    .filter((key) => key !== buildingTypeCoeffKey)
+    .filter((key) => key !== buildingTypeKey)
     .forEach((key) => {
       buildingTypes[key].selected = false;
     });
-  emit('select', buildingTypeCoeffKey);
+
+  switch (buildingTypeKey) {
+    case 'condo':
+      calc.send('SET_CONDO');
+      break;
+    case 'office':
+      calc.send('SET_OFFICE');
+      break;
+    case 'afterRepair':
+      calc.send('SET_AFTER_REPAIR');
+      break;
+    default:
+      throw Error(`Service building type is not handled "${buildingTypeKey}"`);
+  }
 };
 </script>
 

@@ -23,8 +23,13 @@ export interface IAdditionalService {
 }
 
 export interface ISquarePrice {
-  emptyRoom: number;
-  roomAfterRepair: number;
+  office: {
+    basic: number;
+  };
+  repair: {
+    empty: number;
+    withFurniture: number;
+  };
 }
 
 export interface IInitial {

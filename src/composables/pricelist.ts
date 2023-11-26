@@ -22,8 +22,13 @@ export const pricelistByKey = reactive<PriceListByKey>({
     kitchen: 150,
   },
   square: {
-    emptyRoom: 5,
-    roomAfterRepair: 10,
+    office: {
+      basic: 5,
+    },
+    repair: {
+      empty: 10,
+      withFurniture: 15,
+    },
   },
   additionalService: {
     windowCleaning: {

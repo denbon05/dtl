@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import type { useCalcState } from '@/composables/calc';
 import { usePriceList } from '@/composables/pricelist';
-import { watch } from 'vue';
-import { ref } from 'vue';
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 
 const { calc } = defineProps<{
@@ -80,7 +78,7 @@ watch(
             v-model="selectedServices"
             :value="service.key"
             hide-details
-            class="text-no-wrap text-body-1"
+            class="text-no-wrap text-body-2 text-start"
           >
           </v-checkbox>
         </v-col>
