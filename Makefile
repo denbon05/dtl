@@ -1,3 +1,9 @@
+ci:
+	npm run build
+	npm run lint
+	npm run test:e2e
+	npm run test:unit
+
 start:
 	npm run dev
 

@@ -6,7 +6,7 @@ import { createVuetify, type ThemeDefinition } from 'vuetify';
 import { aliases, md } from 'vuetify/iconsets/md';
 import { mdi } from 'vuetify/iconsets/mdi';
 
-const basicTheme: ThemeDefinition = {
+const light: ThemeDefinition = {
   dark: false,
   colors: {
     background: '#FFF',
@@ -24,6 +24,24 @@ const basicTheme: ThemeDefinition = {
   },
 };
 
+const dark: ThemeDefinition = {
+  dark: true,
+  colors: {
+    background: '#FFF',
+    primary: '#00AE31', // green
+    'primary-darken-1': '#096200',
+    secondary: '#490191', // dark purple
+    'secondary-darken-1': '#240345',
+    'app-yellow': '#a8902c',
+    surface: '#2e2d2d',
+    error: '#B00020',
+    info: '#2196F3',
+    success: '#4CAF50',
+    warning: '#FB8C00',
+    disabled: '#56515c', // grey-dark-brown-purple
+  },
+};
+
 export default createVuetify({
   icons: {
     defaultSet: 'md',
@@ -34,9 +52,10 @@ export default createVuetify({
     },
   },
   theme: {
-    defaultTheme: 'basicTheme',
+    defaultTheme: 'light',
     themes: {
-      basicTheme,
+      light,
+      dark,
     },
   },
 });
