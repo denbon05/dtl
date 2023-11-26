@@ -4,15 +4,13 @@ import AppFooter from './components/common/AppFooter.vue';
 </script>
 
 <template>
-  <v-layout>
-    <v-app>
-      <AppBar />
+  <v-app>
+    <AppBar />
 
-      <v-main> <RouterView /> </v-main>
+    <v-main> <RouterView /> </v-main>
 
-      <AppFooter />
-    </v-app>
-  </v-layout>
+    <AppFooter />
+  </v-app>
 </template>
 
 <style></style>

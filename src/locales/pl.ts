@@ -3,6 +3,26 @@ export default {
     call: 'ZADZWOŃ',
   },
 
+  intro: {
+    carousel: {
+      main: {
+        title: 'USUGI SPRZĄTANIA ',
+        subtitle:
+          'Zapewniamy naszym Klientom wysokiej jakości kompleksowe usługi sprzątające.',
+      },
+      imgDescription: {
+        basic:
+          'Sprzątanie domu, pokoju i jego wyposażenia, sprzątanie dokładne i całkowite.',
+        window:
+          'Czyścimy okna, witryny, fasady szklane i framugi; sezonowe mycie okien oraz na żądanie, mycie okien po remoncie.',
+        office:
+          'Celem sprzątania biur jest utrzymanie czystego i zdrowego środowiska pracy. Sprzątanie biur obejmuje czyszczenie powierzchni odkurzaczem, odpylanie i dezynfekcja.',
+        house:
+          'Sprzątanie balkonów, klatek schodowych - pozostałości po złej pogodzie, nagromadzony kurz, pajęczyny oraz ptasie odchody.',
+      },
+    },
+  },
+
   calc: {
     title: 'Wstępna kalkulacja kosztów sprzątania',
     description:
@@ -19,8 +39,8 @@ export default {
         'Sprzątanie mieszkania składające z 1 pokoju i 1 łazienki, kuchni i przedpokoju',
       square: 'Obszar pomieszczenia',
       office: 'Sprzątanie biura',
-      empty: 'Puste pomieszczenie',
-      withFurniture: 'Pomieszczenie z meblami',
+      empty: '@:service.room.empty',
+      withFurniture: '@:service.room.withFurniture',
       service: 'Rodzaj usługi',
       cleaning: 'Rodzaj czyszczenia',
       room: 'Rodzaj pomieszczenia',

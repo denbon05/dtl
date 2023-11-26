@@ -92,7 +92,7 @@ const areRoomsSelected = computed(
 
       <a
         class="text-h4 text-md-h2 text-deep-purple-accent-4"
-        href="tel:+48576471155"
+        href="tel:+48575330380"
         ><v-btn
           color="primary"
           rounded="xl"
