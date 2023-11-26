@@ -1,0 +1,20 @@
+@import './fonts.scss';
+
+body {
+  font-family: 'Martel', sans-serif !important;
+  font-size: 16px;
+}
+
+.v-main {
+  /* desktop only */
+  min-width: 1024px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Krona One', sans-serif;
+}
