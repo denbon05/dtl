@@ -20,7 +20,7 @@ const carouselItems = [
     ><v-col>
       <!-- carousel height full height for lg and minus app bar height -->
       <v-carousel
-        :height="$vuetify.display.lgAndUp ? $vuetify.display.height - 64 : 860"
+        :height="$vuetify.display.lgAndUp ? $vuetify.display.height - 64 : 840"
         show-arrows="hover"
         cycle
         hide-delimiter-background

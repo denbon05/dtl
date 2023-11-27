@@ -36,7 +36,7 @@ export default {
     order: {
       title: 'Zamówienie',
       subtitle:
-        'Sprzątanie mieszkania składające z 1 pokoju i 1 łazienki, kuchni i przedpokoju',
+        'Sprzątanie mieszkania składające z 1 pokoju i 1 łazienki , kuchni i przedpokoju',
       square: 'Obszar pomieszczenia',
       office: 'Sprzątanie biura',
       empty: '@:service.room.empty',
@@ -201,7 +201,7 @@ export default {
         ],
       },
 
-      window: {
+      windows: {
         basic: [
           { title: 'Okno jednoskrzydłowe' },
           { title: 'Okno dwuchskrzydłowe standartowe' },

@@ -1,40 +1,54 @@
 <script setup lang="ts">
+import type { IDescSection } from '@/types/components/cleaning-about';
+
 defineProps<{
-  itemGroups: { key: string; title: string; subtitles?: string[] }[];
+  items: IDescSection[];
 }>();
 </script>
 
 <template>
-  <div class="d-flex flex-column bg-fade-white">
-    <h5 class="text-primary">
+  <div class="d-flex flex-column bg-fade-white desc-item pa-5 pl-8">
+    <h5 class="text-primary mb-5">
       <slot name="title"></slot>
     </h5>
 
-    <v-list>
-      <v-list-group
-        v-for="(group, groupIdx) of itemGroups"
-        :key="`desc-cleaning-item-${group.key}-${groupIdx}`"
+    <ul>
+      <li
+        v-for="(item, idx) of items"
+        :key="`desc-cleaning-item-${item.title}-${idx}`"
       >
         <!-- main title -->
-        <v-list-item>{{ group.title }}</v-list-item>
+        <span>{{ item.title }}</span>
 
-        <!-- in case there are subtitles - show them as subcategory -->
-        <template v-if="group.subtitles?.length">
-          <v-list-item
-            v-for="(subtitle, subtitleIdx) of group.subtitles"
-            :key="`desc-subtitle-${subtitleIdx}`"
-            >{{ subtitle }}</v-list-item
-          >
-        </template>
-      </v-list-group>
-    </v-list>
+        <!-- in case there are subtitle show it as subcategory -->
+        <ul v-if="item.subtitle" class="pl-5 desc-subtitle">
+          <li>{{ item.subtitle }}</li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </template>
 
 <style lang="scss">
 #aboutCleaning {
+  .desc-item {
+    border-radius: 5px;
+    box-shadow: 1px 2px 3px grey;
+  }
+
   .bg-fade-white {
-    background-image: rgba(247, 247, 247, 0.6);
+    background-color: rgba(247, 247, 247, 0.6);
+  }
+
+  .desc-subtitle {
+    list-style-type: none;
+    position: relative;
+
+    &::before {
+      content: '-';
+      position: absolute;
+      left: -0.1rem;
+    }
   }
 }
 </style>
