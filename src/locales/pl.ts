@@ -6,7 +6,7 @@ export default {
   intro: {
     carousel: {
       main: {
-        title: 'USUGI SPRZĄTANIA ',
+        title: 'USŁUGI SPRZĄTANIA ',
         subtitle:
           'Zapewniamy naszym Klientom wysokiej jakości kompleksowe usługi sprzątające.',
       },
