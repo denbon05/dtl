@@ -33,7 +33,7 @@ const areRoomsSelected = computed(
 </script>
 
 <template>
-  <v-sheet id="servicesOrder" class="py-5 px-3 wave">
+  <v-sheet id="servicesOrder" class="py-5 px-5 wave">
     <section class="d-flex flex-column text-center">
       <h2>{{ $t('calc.order.title') }}</h2>
       <span class="my-3 mx-2 text-caption text-medium-emphasis">

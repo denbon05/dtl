@@ -37,8 +37,8 @@ export interface IInitial {
 }
 
 export interface IWindow {
-  singleLeaf: number;
-  doubleLeaf: number;
+  singleLeafWindow: number;
+  doubleLeafWindow: number;
   singleLeafBalconyDoor: number;
   doubleLeafBalconyDoor: number;
   roofWindow: number;

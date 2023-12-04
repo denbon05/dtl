@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { DescItems } from '@/types/components/cleaning-about';
+import type { LocaleMessages } from '@/types/locale';
 import { ref } from 'vue';
 import { useI18n } from 'vue-i18n';
 import BathroomCleaning from './BathroomCleaning.vue';
@@ -7,8 +9,6 @@ import OfficeCleaning from './OfficeCleaning.vue';
 import OtherCleaning from './OtherCleaning.vue';
 import RoomCleaning from './RoomCleaning.vue';
 import WindowCleaning from './WindowCleaning.vue';
-import type { LocaleMessages } from '@/types/locale';
-import type { DescItems } from '@/types/components/cleaning-about';
 
 const { t, te, locale, getLocaleMessage } = useI18n();
 
@@ -44,13 +44,12 @@ const categories = serviceKeys.map((key, idx) => {
   }
 
   const services = messages.cleaning.services[key];
-  console.log('services', services);
 
   const basicServices: DescItems = (services.basic as DescItems).map(
     (item, i) => ({
       title: t(`cleaning.services.${key}.basic[${i}].title`),
-      subtitle: te(`cleaning.services.room.basic[${i}].subtitle`)
-        ? t(`cleaning.services.room.basic[${i}].subtitle`)
+      subtitle: te(`cleaning.services.${key}.basic[${i}].subtitle`)
+        ? t(`cleaning.services.${key}.basic[${i}].subtitle`)
         : '',
     })
   );
@@ -58,8 +57,8 @@ const categories = serviceKeys.map((key, idx) => {
   const accurateServices: DescItems = // @ts-ignore
     ((services?.accurate || []) as DescItems).map((item, i) => ({
       title: t(`cleaning.services.${key}.accurate[${i}].title`),
-      subtitle: te(`cleaning.services.room.basic[${i}].subtitle`)
-        ? t(`cleaning.services.room.basic[${i}].subtitle`)
+      subtitle: te(`cleaning.services.${key}.accurate[${i}].subtitle`)
+        ? t(`cleaning.services.${key}.accurate[${i}].subtitle`)
         : '',
     }));
 
@@ -74,29 +73,32 @@ const categories = serviceKeys.map((key, idx) => {
 
 // first item by default
 const tab = ref<(typeof categories)[number]['key']>(categories[0].key);
+
+const contentHeight = 760;
 </script>
 
 <template>
   <v-row justify="center" id="aboutCleaning" class="mt-15">
-    <v-col cols="9">
+    <v-col cols="11" lg="9" xl="7">
       <div class="d-flex flex-column align-center">
         <h2 class="text-center my-5">{{ $t('cleaning.title') }}</h2>
         <h4 class="text-h6 px-2">{{ $t('cleaning.description') }}</h4>
       </div>
 
-      <v-card height="760" class="my-7">
+      <!-- whole height = tab content + tabs height -->
+      <v-card :height="760 + 72" class="my-7">
         <v-tabs height="72" v-model="tab" bg-color="secondary" grow>
           <v-tab
             v-for="category of categories"
             :key="`cleaning-category-${category.key}`"
             :value="category.key"
-            class="text-h6"
+            class="font-weight-bold text-h6"
             variant="text"
             >{{ category.title }}</v-tab
           >
         </v-tabs>
 
-        <v-window class="h-100" v-model="tab">
+        <v-window v-model="tab">
           <v-window-item
             v-for="{
               key,
@@ -108,7 +110,9 @@ const tab = ref<(typeof categories)[number]['key']>(categories[0].key);
             :value="key"
           >
             <component
+              class="tab-item"
               :is="tabComponent"
+              :height="contentHeight"
               :basics="basicServices"
               :advanced="accurateServices"
             ></component>

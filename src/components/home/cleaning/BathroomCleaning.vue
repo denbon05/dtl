@@ -6,14 +6,18 @@ import DescriptionSection from './DescriptionSection.vue';
 defineProps<{
   basics: IDescSection[];
   advanced?: IDescSection[];
+  height: number;
 }>();
 </script>
 
 <template>
-  <v-img :src="bathroomImg">
-    <div
-      class="w-33 d-flex flex-column ma-15 pl-2 pr-7 h-75 justify-space-between"
-    >
+  <v-img
+    :src="bathroomImg"
+    :height="height"
+    cover
+    alt="Woman cleaning a bathroom"
+  >
+    <div class="w-50 h-100 d-flex flex-column mx-10 pr-6 justify-space-around">
       <DescriptionSection :items="basics">
         <template #title>{{ $t('cleaning.services.header.basic') }}</template>
       </DescriptionSection>

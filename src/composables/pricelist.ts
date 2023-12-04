@@ -2,11 +2,11 @@ import { fetchPriceList } from '@/api/pricelist';
 import type { PriceListByKey } from '@/types/api/pricelist';
 import { reactive, ref } from 'vue';
 
+/** Default price list values */
 export const pricelistByKey = reactive<PriceListByKey>({
   initial: {
     cleaning: 200,
   },
-  // default values
   serviceCoefficient: {
     condo: 1,
     afterRepair: 1.4,
@@ -67,6 +67,13 @@ export const pricelistByKey = reactive<PriceListByKey>({
     ironing: {
       price: 50,
     },
+  },
+  window: {
+    singleLeafWindow: 25,
+    doubleLeafWindow: 45,
+    singleLeafBalconyDoor: 40,
+    doubleLeafBalconyDoor: 40,
+    roofWindow: 40,
   },
 });
 

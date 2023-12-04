@@ -37,7 +37,7 @@ defineProps<{
   }
 
   .bg-fade-white {
-    background-color: rgba(247, 247, 247, 0.6);
+    background-color: rgba(247, 247, 247, 0.75);
   }
 
   .desc-subtitle {
