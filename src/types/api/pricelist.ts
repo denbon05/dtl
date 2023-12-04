@@ -36,11 +36,20 @@ export interface IInitial {
   cleaning: number;
 }
 
+export interface IWindow {
+  singleLeafWindow: number;
+  doubleLeafWindow: number;
+  singleLeafBalconyDoor: number;
+  doubleLeafBalconyDoor: number;
+  roofWindow: number;
+}
+
 export type PriceListByKey = {
   initial: IInitial;
   serviceCoefficient: IServiceCoefficient;
   cleaningCoefficient: ICleaningCoefficient;
   square: ISquarePrice;
+  window: IWindow;
   roomType: IRoomType;
   additionalService: IAdditionalService;
 };

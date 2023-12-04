@@ -33,7 +33,7 @@ const areRoomsSelected = computed(
 </script>
 
 <template>
-  <v-sheet id="servicesOrder" border="green" rounded class="py-5 px-3">
+  <v-sheet id="servicesOrder" class="py-5 px-5 wave">
     <section class="d-flex flex-column text-center">
       <h2>{{ $t('calc.order.title') }}</h2>
       <span class="my-3 mx-2 text-caption text-medium-emphasis">
@@ -107,7 +107,29 @@ const areRoomsSelected = computed(
 
 <style lang="scss">
 #servicesOrder {
-  border: 0.5px solid;
+  border: 0.3px solid;
   border-color: rgb(var(--v-theme-primary));
+  // border-bottom: none;
+  border-radius: 8px;
+  // border-radius: 8px 8px 0 0;
 }
+
+// .wave {
+//   position: relative;
+// }
+// .wave::before {
+//   content: '';
+//   position: absolute;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   background-repeat: repeat;
+//   height: 15px;
+//   background-size: 30px 30px;
+//   background-image: radial-gradient(
+//     circle at 10px -5px,
+//     transparent 12px,
+//     green 13px
+//   );
+// }
 </style>

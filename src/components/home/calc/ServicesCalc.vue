@@ -38,7 +38,7 @@ const additionalServicesComponent =
 
 <template>
   <v-row justify="center">
-    <v-col lg="9" xl="7" class="text-center px-5">
+    <v-col lg="8" xl="7" class="text-center px-5">
       <h1 class="mt-8 mb-5" id="calcTitle">{{ $t('calc.title') }}</h1>
       <p class="text-subtitle-1 text-left">
         {{

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import IntroCarousel from '@/components/home/IntroCarousel.vue';
-// import ServiceCards from '@/components/home/ServiceCards.vue';
 import ServicesCalc from '@/components/home/calc/ServicesCalc.vue';
+import AboutCleaning from '@/components/home/cleaning/AboutCleaning.vue';
 </script>
 
 <template>
@@ -9,8 +9,8 @@ import ServicesCalc from '@/components/home/calc/ServicesCalc.vue';
     <v-container fluid class="h-100 pa-0 ma-0">
       <IntroCarousel />
 
-      <!-- <ServiceCards /> -->
       <ServicesCalc />
+      <AboutCleaning />
     </v-container>
   </v-lazy>
 </template>

@@ -9,15 +9,9 @@ import router from './router';
 
 const app = createApp(App);
 
-const isMonitoringEnabled = Boolean(import.meta.env.VITE_MONITORING_ENABLED);
-
 app.use(router);
 app.use(vuetify);
 app.use(i18n);
-
-if (isMonitoringEnabled) {
-  // monitor app in prod only
-  app.use(rollbar);
-}
+app.use(rollbar);
 
 app.mount('#app');
