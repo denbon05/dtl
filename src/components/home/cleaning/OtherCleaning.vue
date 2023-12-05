@@ -14,13 +14,11 @@ defineProps<{
     alt="Cleaning, packages, house, clean room"
     class="pa-5"
   >
-    <div class="d-flex justify-space-between h-100 px-lg-5 px-xl-5">
-      <div class="d-flex h-75 align-center pl-lg-4">
+    <div class="d-flex justify-space-between h-100 px-lg-5 px-xl-0">
+      <div class="d-flex h-75 align-center pl-lg-4 mt-lg-3">
         <div class="option-item align-self-end pb-10">
           <v-icon icon="mdi:mdi-hexagram" color="green"></v-icon>
-          <span class="text-subtitle-1">{{
-            $t('cleaning.services.other.stairs')
-          }}</span>
+          <span class="">{{ $t('cleaning.services.other.stairs') }}</span>
         </div>
       </div>
 

@@ -30,10 +30,10 @@ const dark: ThemeDefinition = {
     background: '#FFF',
     primary: '#00AE31', // green
     'primary-darken-1': '#096200',
-    secondary: '#490191', // dark purple
-    'secondary-darken-1': '#240345',
-    'app-yellow': '#a8902c',
-    surface: '#2e2d2d',
+    secondary: 'orange-lighten-5',
+    'secondary-darken-1': 'orange-darken-4',
+    'app-yellow': 'yellow-darken-1',
+    surface: 'amber-darken-5',
     error: '#B00020',
     info: '#2196F3',
     success: '#4CAF50',
