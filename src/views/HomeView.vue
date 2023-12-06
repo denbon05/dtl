@@ -2,6 +2,9 @@
 import IntroCarousel from '@/components/home/IntroCarousel.vue';
 import ServicesCalc from '@/components/home/calc/ServicesCalc.vue';
 import AboutCleaning from '@/components/home/cleaning/AboutCleaning.vue';
+import OrderSteps from '@/components/home/order/OrderSteps.vue';
+import AboutPrice from '@/components/home/pricelist/AboutPrice.vue';
+import CleaningTips from '@/components/home/tips/CleaningTips.vue';
 </script>
 
 <template>
@@ -11,6 +14,9 @@ import AboutCleaning from '@/components/home/cleaning/AboutCleaning.vue';
 
       <ServicesCalc />
       <AboutCleaning />
+      <AboutPrice class="my-6" />
+      <OrderSteps class="my-6" />
+      <CleaningTips class="my-6" />
     </v-container>
   </v-lazy>
 </template>

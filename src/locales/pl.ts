@@ -219,4 +219,42 @@ export default {
       },
     },
   },
+
+  price: {
+    title: 'Nasze ceny',
+    desc: 'Oferujemy usługi w zakresie sprzątania i czyszczenia jednorazowego , cyklicznego jak i długoterminowego.',
+  },
+
+  order: {
+    steps: {
+      title: 'Etapy zamówienia ',
+      phone: {
+        title: 'Twój telefon do nas',
+        desc: 'Skontaktuj się z nami w wygodny sposób. Menedżer telefonicznie lub korespondencyjnie omawia wszystkie szczegóły Twojego zamówienia i ustala z Tobą dogodny termin i godzinę sprzątania',
+      },
+      day: {
+        title: 'Dzień X',
+        desc: 'O wyznaczonej godzinie na miejsce przyjeżdża ekipa sprzątająca wraz ze sprzętem. Nie musisz się przygotowywać! Jedyne czego potrzebujemy to dostęp do wody i prądu.',
+      },
+      result: {
+        title: 'Uzyskanie wyniku',
+        desc: 'Godzinę po zakończeniu dzwoni do ciebie brygadzista. Wracasz do domu i nie poznajesz swojego domu. Razem z brygadzistą akceptujesz pracę i jesteś zadowolony z efektu!',
+      },
+    },
+  },
+
+  tips: {
+    title: 'Wskazówka dotycząca czyszczenia',
+    caption:
+      'Czystość i porządek w mieszkaniu same potrafią poprawić nastrój. Dlatego utrzymanie porządku jest bardzo ważne nie tylko ze względów higienicznych, ale także dla pozytywnego stanu ducha. Przestrzegając prostych zasad sprzątania, bez nadmiernego wysiłku utrzymasz mieszkanie w czystości',
+    desc: 'Wybierz wiadro lub kosz, w którym będą znajdować się narzędzia i detergenty potrzebne do mycia. Dzięki temu wszystko, co potrzebne w pracy, będziesz mieć pod ręką, zamiast biegać za każdym razem po szmatę, myjkę itp.',
+    cleaningSteps: [
+      'Przejrzyj rzeczy w szafach i wyrzuć wszystko, czego nie potrzebujesz. Często niektóre rzeczy leżą na półce latami, zajmując miejsce. Jeśli od dłuższego czasu nie nosisz jakichś ubrań lub butów, albo niektórych rzeczy nie używasz, wyrzuć je bez żalu.',
+      'Podziel proces sprzątania na kilka etapów. Nie powinieneś próbować robić wszystkiego na raz, aby się nie zmęczyć. Na przykład jednego dnia możesz posortować rzeczy w szafie, a innego dnia posprzątać łazienkę itp. Pracę ciężką zamieniaj na lekką.',
+      'Nie odkładaj na długo plam do czyszczenia lub prania mocno zabrudzonych rzeczy. Im więcej czasu mija, tym trudniej jest usunąć plamy i zabrudzenia.',
+      'Zanim zaczniesz czyścić plamy na tapicerce czy dywanach, dowiedz się, jakim środkiem to zrobić, aby nie zepsuć rzeczy. Jeśli to możliwe, określ skład tkaniny i dobierz odpowiedni środek czyszczący.',
+      'Przede wszystkim wykonują czyszczenie chemiczne, a następnie rozpoczynają pranie. Oznacza to, że najpierw usuwają pajęczyny, zamiatają kurz, a następnie myją szafki i podłogę.',
+      'Wszystkie prace są wykonywane od góry do dołu. Zaczynają od sprzątania górnych szafek, abażurów na suficie, a kończą na umyciu podłogi.',
+    ],
+  },
 };

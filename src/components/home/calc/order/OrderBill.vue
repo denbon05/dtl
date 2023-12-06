@@ -2,6 +2,7 @@
 import type { useCalcState } from '@/composables/calc';
 import { useOrderState } from '@/composables/order';
 import { usePriceList } from '@/composables/pricelist';
+import { MAIN_PHONE_NUMBER } from '@/constants/';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import AdditionalServices from './AdditionalServices.vue';
@@ -12,8 +13,8 @@ const { calc } = defineProps<{
   calc: ReturnType<typeof useCalcState>;
 }>();
 
-const { pricelistByKey } = usePriceList();
-const order = useOrderState(calc, pricelistByKey);
+const pricelist = usePriceList();
+const order = useOrderState(calc, pricelist.pricelistByKey);
 
 const { t } = useI18n();
 
@@ -75,6 +76,7 @@ const areRoomsSelected = computed(
 
         <h4 class="text-subtitle-1 mt-4">{{ $t('calc.order.sum.title') }}:</h4>
         <h4 class="text-subtitle-1">
+          <!-- TODO https://vue-i18n.intlify.dev/guide/advanced/component#scope-resolving -->
           {{ $t('calc.order.sum.from') }}
           <span class="font-weight-black text-body-1">
             {{
@@ -92,7 +94,7 @@ const areRoomsSelected = computed(
 
       <a
         class="text-h4 text-md-h2 text-deep-purple-accent-4"
-        href="tel:+48575330380"
+        :href="`tel:${MAIN_PHONE_NUMBER}`"
         ><v-btn
           color="primary"
           rounded="xl"

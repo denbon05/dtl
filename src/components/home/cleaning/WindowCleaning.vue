@@ -14,18 +14,16 @@ const { basics } = defineProps<{
 
 const { n } = useI18n();
 
-const {
-  pricelistByKey: { window: glass },
-} = usePriceList();
+const pricelist = usePriceList();
 
 const basicsWithPrice = computed<IDescSection[]>(() => {
   // the order of basic items must be the same as from the price list
   const prices = [
-    glass.singleLeafWindow,
-    glass.doubleLeafWindow,
-    glass.singleLeafBalconyDoor,
-    glass.doubleLeafBalconyDoor,
-    glass.roofWindow,
+    pricelist.pricelistByKey.window.singleLeafWindow,
+    pricelist.pricelistByKey.window.doubleLeafWindow,
+    pricelist.pricelistByKey.window.singleLeafBalconyDoor,
+    pricelist.pricelistByKey.window.doubleLeafBalconyDoor,
+    pricelist.pricelistByKey.window.roofWindow,
   ];
   return basics.map<IDescSection>((item, idx) => {
     const { title } = item;
