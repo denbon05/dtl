@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { MAIN_PHONE_NUMBER } from '@/constants/';
 import balconyImg from '@/assets/img/intro-carousel-balcony.png';
 import glovesWithSofaImg from '@/assets/img/intro-carousel-gloves-with-sofa.png';
 import officeImg from '@/assets/img/intro-carousel-office.png';
@@ -36,7 +37,9 @@ const carouselItems = [
     ><v-col>
       <!-- carousel height full height for lg and minus app bar height -->
       <v-carousel
-        :height="$vuetify.display.lgAndUp ? $vuetify.display.height - 64 : 840"
+        :height="
+          $vuetify.display.lgAndUp ? $vuetify.display.height - (64 + 200) : 840
+        "
         show-arrows="hover"
         cycle
         hide-delimiter-background
@@ -50,10 +53,10 @@ const carouselItems = [
           cover
         >
           <section
-            class="w-100 h-100 d-flex flex-column justify-space-between py-15"
+            class="w-100 h-100 d-flex flex-column justify-space-between py-15 pb-lg-5"
           >
-            <div class="d-flex justify-center bg-black-fade w-50 py-2">
-              <div class="d-flex flex-column text-white align-center">
+            <div class="d-flex justify-center bg-black-fade w-45 py-4">
+              <div class="d-flex flex-column text-white align-center text-wrap">
                 <span class="text-h2 font-weight-bold text-center mb-4"
                   >{{ $t('intro.carousel.main.title') }}
                 </span>
@@ -63,7 +66,7 @@ const carouselItems = [
               </div>
             </div>
 
-            <div class="d-flex justify-end text-black mb-15 pb-10">
+            <div class="d-flex justify-end text-black mb-15 pb-2">
               <div class="d-flex justify-start bg-white-fade align-center w-45">
                 <p class="text-h5 font-weight-medium py-2 pl-7 pr-10">
                   {{ item.info }}
@@ -76,7 +79,7 @@ const carouselItems = [
         <a
           id="cta"
           class="text-md-h2 text-deep-purple-accent-4"
-          href="tel:+48575330380"
+          :href="`tel:${MAIN_PHONE_NUMBER}`"
           ><v-btn
             color="primary"
             rounded="xl"
@@ -100,10 +103,6 @@ const carouselItems = [
     left: 85%;
 
     transform: translate(-50%, -50%);
-  }
-
-  .w-45 {
-    width: 45%;
   }
 
   .bg-black-fade {

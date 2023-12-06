@@ -7,7 +7,7 @@ import { useI18n } from 'vue-i18n';
 
 const roomTypeKeys: (keyof IRoomType)[] = ['bathroom', 'room'];
 const { t } = useI18n();
-const { pricelistByKey } = usePriceList();
+const pricelist = usePriceList();
 
 const { order } = defineProps<{
   order: ReturnType<typeof useOrderState>;
@@ -50,7 +50,7 @@ const cleaningTitle = computed(() => {
     <h4 class="text-subtitle-1 d-flex justify-space-between">
       <span>{{ cleaningTitle }}</span>
       <span v-if="order.state.value.context.cleaningType === 'accurate'"
-        >x{{ pricelistByKey.cleaningCoefficient.accurate }}</span
+        >x{{ pricelist.pricelistByKey.cleaningCoefficient.accurate }}</span
       >
     </h4>
     <div class="d-flex flex-column">

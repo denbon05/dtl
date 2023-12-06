@@ -81,7 +81,9 @@ const contentHeight = 760;
   <v-row justify="center" id="aboutCleaning" class="mt-15">
     <v-col cols="11" lg="9" xl="7">
       <div class="d-flex flex-column align-center">
-        <h2 class="text-center my-5">{{ $t('cleaning.title') }}</h2>
+        <h1 class="text-center my-5 font-weight-medium">
+          {{ $t('cleaning.title') }}
+        </h1>
         <h4 class="text-h6 px-2">{{ $t('cleaning.description') }}</h4>
       </div>
 

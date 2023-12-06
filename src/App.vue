@@ -13,4 +13,8 @@ import AppFooter from './components/common/AppFooter.vue';
   </v-app>
 </template>
 
-<style></style>
+<style lang="scss">
+.w-45 {
+  width: 45%;
+}
+</style>

@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { useCalcState } from '@/composables/calc';
-import { usePriceList } from '@/composables/pricelist';
 import { ref, watch } from 'vue';
 import AdditionalServices from './additional/AdditionalServices.vue';
 import BuildingType from './building/BuildingType.vue';
 import CleaningType from './cleaning/CleaningType.vue';
 import OrderBill from './order/OrderBill.vue';
 import RoomType from './room/RoomType.vue';
-
-const { isPricelistLoading } = usePriceList();
 
 const resetCalc = () => {
   // reset additional services
@@ -39,7 +36,9 @@ const additionalServicesComponent =
 <template>
   <v-row justify="center">
     <v-col lg="8" xl="7" class="text-center px-5">
-      <h1 class="mt-8 mb-5" id="calcTitle">{{ $t('calc.title') }}</h1>
+      <h1 class="mt-8 mb-5 font-weight-medium" id="calcTitle">
+        {{ $t('calc.title') }}
+      </h1>
       <p class="text-subtitle-1 text-left">
         {{
           $t('calc.description', {
@@ -51,7 +50,7 @@ const additionalServicesComponent =
     </v-col>
   </v-row>
 
-  <v-row v-if="!isPricelistLoading" justify="center" class="mt-4"
+  <v-row justify="center" class="mt-4"
     ><v-col lg="5" xl="4" class="px-5">
       <section id="servicesCalc" class="d-flex flex-column text-center">
         <BuildingType :calc="calc" />

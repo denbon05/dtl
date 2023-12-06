@@ -9,22 +9,22 @@ const { calc } = defineProps<{
   calc: ReturnType<typeof useCalcState>;
 }>();
 
-const {
-  pricelistByKey: { additionalService },
-} = usePriceList();
+const pricelist = usePriceList();
 const { t } = useI18n();
 
 // prepare items to show them 3 in a row
 const groupedServicesByRow = computed(() => {
-  const items = Object.keys(additionalService).map((key) => {
-    const { title = t(`service.additionalService.${key}`) } =
-      additionalService[key];
-    return {
-      key,
-      title,
-      selected: false,
-    };
-  });
+  const items = Object.keys(pricelist.pricelistByKey.additionalService).map(
+    (key) => {
+      const { title = t(`service.additionalService.${key}`) } =
+        pricelist.pricelistByKey.additionalService[key];
+      return {
+        key,
+        title,
+        selected: false,
+      };
+    }
+  );
   const itemsNumInRow = 3;
   const groupedByRowItems: (typeof items)[] = [];
   for (let i = 0; i < items.length; i += itemsNumInRow) {
