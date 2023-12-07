@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { MAIN_PHONE_NUMBER } from '@/constants/';
 import balconyImg from '@/assets/img/intro-carousel-balcony.png';
 import glovesWithSofaImg from '@/assets/img/intro-carousel-gloves-with-sofa.png';
 import officeImg from '@/assets/img/intro-carousel-office.png';
 import windowImg from '@/assets/img/intro-carousel-window.png';
+import { CONTACT_PHONE_NUMBER } from '@/constants/';
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
@@ -79,7 +79,7 @@ const carouselItems = [
         <a
           id="cta"
           class="text-md-h2 text-deep-purple-accent-4"
-          :href="`tel:${MAIN_PHONE_NUMBER}`"
+          :href="`tel:${CONTACT_PHONE_NUMBER}`"
           ><v-btn
             color="primary"
             rounded="xl"

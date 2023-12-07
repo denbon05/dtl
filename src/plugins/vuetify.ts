@@ -14,7 +14,7 @@ const light: ThemeDefinition = {
     'primary-darken-1': '#096200',
     secondary: '#7204E0', // purple
     'secondary-darken-1': '#4a078c',
-    'app-yellow': '#FFE785',
+    'app-yellow': '#FFDD55',
     surface: '#FFFFFF',
     error: '#B00020',
     info: '#2196F3',

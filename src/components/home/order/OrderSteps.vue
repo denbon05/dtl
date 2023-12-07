@@ -2,7 +2,7 @@
 import clockYellowBg from '@/assets/img/clock-yellow-bg.png';
 import phoneYellowBg from '@/assets/img/phone-yellow-bg.png';
 import starYellowBg from '@/assets/img/star-yellow-bg.png';
-import { MAIN_PHONE_NUMBER } from '@/constants/';
+import { CONTACT_PHONE_NUMBER } from '@/constants/';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import OrderStep from './OrderStep.vue';
@@ -43,7 +43,7 @@ const steps = computed(() =>
       </v-row>
 
       <div class="d-flex justify-center my-5">
-        <a :href="`tel:${MAIN_PHONE_NUMBER}`"
+        <a :href="`tel:${CONTACT_PHONE_NUMBER}`"
           ><v-btn
             color="primary"
             rounded="xl"

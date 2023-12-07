@@ -1,6 +1,11 @@
 export default {
   cta: {
     call: 'ZADZWOŃ',
+    consult: 'Uzyskać konsultację',
+  },
+
+  main: {
+    desc: 'DTL serwis sprzątający',
   },
 
   intro: {
@@ -256,5 +261,9 @@ export default {
       'Przede wszystkim wykonują czyszczenie chemiczne, a następnie rozpoczynają pranie. Oznacza to, że najpierw usuwają pajęczyny, zamiatają kurz, a następnie myją szafki i podłogę.',
       'Wszystkie prace są wykonywane od góry do dołu. Zaczynają od sprzątania górnych szafek, abażurów na suficie, a kończą na umyciu podłogi.',
     ],
+  },
+
+  partner: {
+    title: 'Nasz partner',
   },
 };

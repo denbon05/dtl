@@ -20,13 +20,7 @@ const additionalServicesPricelist = computed(() =>
       <div class="w-75 mb-3">
         <div class="d-flex justify-space-between">
           <span>{{ service.title }}</span>
-          <span
-            >{{
-              $n(service.price, 'currency', {
-                notation: 'compact',
-              })
-            }}
-          </span>
+          <span>{{ $n(service.price, 'currency') }} </span>
         </div>
         <hr class="hr-fade" />
       </div>

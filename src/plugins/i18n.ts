@@ -12,7 +12,7 @@ const i18n = createI18n<LocaleMessages, 'pl'>({
   },
   numberFormats: {
     pl: {
-      currency: { style: 'currency', currency: 'PLN', notation: 'standard' },
+      currency: { style: 'currency', currency: 'PLN', notation: 'compact' },
     },
   },
 });

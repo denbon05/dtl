@@ -9,7 +9,7 @@ import AppFooter from './components/common/AppFooter.vue';
 
     <v-main> <RouterView /> </v-main>
 
-    <AppFooter />
+    <AppFooter class="mt-2" />
   </v-app>
 </template>
 

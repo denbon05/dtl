@@ -2,7 +2,7 @@
 import type { useCalcState } from '@/composables/calc';
 import { useOrderState } from '@/composables/order';
 import { usePriceList } from '@/composables/pricelist';
-import { MAIN_PHONE_NUMBER } from '@/constants/';
+import { CONTACT_PHONE_NUMBER } from '@/constants/';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import AdditionalServices from './AdditionalServices.vue';
@@ -61,9 +61,7 @@ const areRoomsSelected = computed(
         >
           {{ $t('calc.order.price') }}:
           <span class="font-weight-medium">{{
-            $n(order.state.value.context.mainServicesPrice, 'currency', {
-              notation: 'compact',
-            })
+            $n(order.state.value.context.mainServicesPrice, 'currency')
           }}</span>
         </h4>
         <hr />
@@ -79,11 +77,7 @@ const areRoomsSelected = computed(
           <!-- TODO https://vue-i18n.intlify.dev/guide/advanced/component#scope-resolving -->
           {{ $t('calc.order.sum.from') }}
           <span class="font-weight-black text-body-1">
-            {{
-              $n(order.state.value.context.totalPrice, 'currency', {
-                notation: 'compact',
-              })
-            }}
+            {{ $n(order.state.value.context.totalPrice, 'currency') }}
           </span>
         </h4>
       </div>
@@ -94,7 +88,7 @@ const areRoomsSelected = computed(
 
       <a
         class="text-h4 text-md-h2 text-deep-purple-accent-4"
-        :href="`tel:${MAIN_PHONE_NUMBER}`"
+        :href="`tel:${CONTACT_PHONE_NUMBER}`"
         ><v-btn
           color="primary"
           rounded="xl"
