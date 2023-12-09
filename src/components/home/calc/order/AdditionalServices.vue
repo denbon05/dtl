@@ -76,9 +76,7 @@ const updateAdditionalServiceAmountByKey = (
             </v-btn>
           </v-col>
           <v-col cols="3" class="d-flex justify-end">{{
-            $n(service.price, 'currency', {
-              notation: 'compact',
-            })
+            $n(service.price, 'currency')
           }}</v-col>
         </v-row>
         <v-divider insert thickness="1"></v-divider>

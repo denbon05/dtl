@@ -54,9 +54,11 @@ const cleaningTitle = computed(() => {
       >
     </h4>
     <div class="d-flex flex-column">
-      <div class="d-flex justify-space-around">
+      <div class="d-flex">
         <template v-for="roomTypeKey in roomTypeKeys" :key="roomTypeKey">
-          <v-list class="pl-0 ml-0 d-flex justify-space-between flex-nowrap">
+          <v-list
+            class="pl-0 ml-0 d-flex justify-space-between flex-nowrap mx-4"
+          >
             <div class="flex-1-0">{{ $t(`service.room.${roomTypeKey}`) }}</div>
             <div class="flex-1 mx-4">
               <!-- Increase/decrease room amount -->

@@ -30,14 +30,14 @@ defineProps<{
 </template>
 
 <style lang="scss">
-#aboutCleaning {
+#cleaning {
   .desc-item {
     border-radius: 5px;
     box-shadow: 1px 2px 3px grey;
   }
 
   .bg-fade-white {
-    background-color: rgba(247, 247, 247, 0.75);
+    background-color: rgba(247, 247, 247, 0.8);
   }
 
   .desc-subtitle {

@@ -1,6 +1,21 @@
 export default {
   cta: {
     call: 'ZADZWOŃ',
+    consult: 'Uzyskać konsultację',
+  },
+
+  main: {
+    desc: 'DTL serwis sprzątający',
+    localization:
+      'Pracujemy na terenie Bielska-Białej oraz w promieniu 20 km od miasta',
+  },
+
+  appBar: {
+    calc: 'KALKULATOR',
+    cleaning: 'CZYSZCZENIE TO...',
+    order: 'ZAMÓWIENIE',
+    price: 'CENA',
+    faq: 'PYTANIA I ODPOWIEDZI',
   },
 
   intro: {
@@ -223,6 +238,10 @@ export default {
   price: {
     title: 'Nasze ceny',
     desc: 'Oferujemy usługi w zakresie sprzątania i czyszczenia jednorazowego , cyklicznego jak i długoterminowego.',
+    helpers: {
+      from: 'od',
+      item: 'szt',
+    },
   },
 
   order: {
@@ -256,5 +275,9 @@ export default {
       'Przede wszystkim wykonują czyszczenie chemiczne, a następnie rozpoczynają pranie. Oznacza to, że najpierw usuwają pajęczyny, zamiatają kurz, a następnie myją szafki i podłogę.',
       'Wszystkie prace są wykonywane od góry do dołu. Zaczynają od sprzątania górnych szafek, abażurów na suficie, a kończą na umyciu podłogi.',
     ],
+  },
+
+  partner: {
+    title: 'Nasz partner',
   },
 };

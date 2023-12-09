@@ -78,7 +78,7 @@ const contentHeight = 760;
 </script>
 
 <template>
-  <v-row justify="center" id="aboutCleaning" class="mt-15">
+  <v-row justify="center" class="mt-15">
     <v-col cols="11" lg="9" xl="7">
       <div class="d-flex flex-column align-center">
         <h1 class="text-center my-5 font-weight-medium">

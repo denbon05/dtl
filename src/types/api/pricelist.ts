@@ -19,6 +19,8 @@ export interface IAdditionalService {
   [key: string]: {
     price: number;
     title?: string;
+    isMinPrice?: boolean;
+    isPerItem?: boolean;
   };
 }
 

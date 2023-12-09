@@ -73,7 +73,7 @@ watch(
       </v-col>
 
       <v-col cols="2" class="d-flex justify-end">
-        <span>{{ $n(price, 'currency', { notation: 'compact' }) }}</span></v-col
+        <span>{{ $n(price, 'currency') }}</span></v-col
       >
     </v-row>
     <v-divider insert thickness="1"></v-divider>

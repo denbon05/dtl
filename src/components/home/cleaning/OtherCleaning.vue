@@ -15,29 +15,33 @@ defineProps<{
     class="pa-5"
   >
     <div class="d-flex justify-space-between h-100 px-lg-5 px-xl-0">
-      <div class="d-flex h-75 align-center pl-lg-4 mt-lg-3">
+      <div class="d-flex h-75 align-center ml-1 mt-3">
         <div class="option-item align-self-end pb-10">
           <v-icon icon="mdi:mdi-hexagram" color="green"></v-icon>
           <span class="">{{ $t('cleaning.services.other.stairs') }}</span>
         </div>
       </div>
 
-      <div class="d-flex pl-lg-15 pr-lg-5">
-        <div class="option-item mt-15 mt-lg-11 mr-1">
-          <v-icon icon="mdi:mdi-hexagram" color="green"></v-icon>
-          <span class="text-subtitle-1 text-no-wrap">{{
-            $t('cleaning.services.other.balcony')
-          }}</span>
-        </div>
-        <div class="option-item mt-2 mr-1">
-          <v-icon
-            class="icon-right"
-            icon="mdi:mdi-hexagram"
-            color="green"
-          ></v-icon>
-          <span class="text-subtitle-1 text-no-wrap">{{
-            $t('cleaning.services.other.afterRepair')
-          }}</span>
+      <div class="w-50 h-50">
+        <div
+          class="d-flex flex-column py-5 ml-15 w-75 h-50 align-content-space-around"
+        >
+          <div class="option-item ml-15">
+            <v-icon icon="mdi:mdi-hexagram" color="green"></v-icon>
+            <span class="text-subtitle-1 text-no-wrap">{{
+              $t('cleaning.services.other.balcony')
+            }}</span>
+          </div>
+          <div class="option-item mt-3 text-end">
+            <v-icon
+              class="icon-right"
+              icon="mdi:mdi-hexagram"
+              color="green"
+            ></v-icon>
+            <span class="text-subtitle-1 text-no-wrap">{{
+              $t('cleaning.services.other.afterRepair')
+            }}</span>
+          </div>
         </div>
       </div>
     </div>
@@ -64,7 +68,7 @@ defineProps<{
 // attach item option to the relevant section on the picture
 @media only screen and (min-width: 1500px) {
   .option-item:nth-child(1) {
-    padding-right: 50px;
+    margin-left: 2vw;
   }
 }
 </style>

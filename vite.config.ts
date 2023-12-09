@@ -8,28 +8,42 @@ import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 import { dirname, resolve } from 'node:path';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    loadVersion(),
-    vue(),
-    vuetify({
-      styles: {
-        configFile: './src/styles/settings.scss',
+export default defineConfig(({ mode }) => {
+  const isProd = mode === 'production';
+
+  return {
+    plugins: [
+      loadVersion(),
+      vue(),
+      vuetify({
+        styles: {
+          configFile: './src/styles/settings.scss',
+        },
+      }),
+      VueI18nPlugin({
+        include: resolve(
+          dirname(fileURLToPath(import.meta.url)),
+          './src/locales/**'
+        ),
+      }),
+    ],
+    resolve: {
+      alias: {
+        '@': fileURLToPath(new URL('./src', import.meta.url)),
       },
-    }),
-    VueI18nPlugin({
-      include: resolve(
-        dirname(fileURLToPath(import.meta.url)),
-        './src/locales/**'
-      ),
-    }),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
-  },
-  server: {
-    host: true,
-  },
+    server: {
+      host: true,
+      proxy: {
+        '/assets/.*': {
+          headers: {
+            // cache static assets for a one day in prod
+            'Cache-Control': `public, max-age=0, s-maxage=${
+              isProd ? 86400 : 0
+            }`,
+          },
+        },
+      },
+    },
+  };
 });
