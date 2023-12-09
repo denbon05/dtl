@@ -6,6 +6,16 @@ export default {
 
   main: {
     desc: 'DTL serwis sprzątający',
+    localization:
+      'Pracujemy na terenie Bielska-Białej oraz w promieniu 20 km od miasta',
+  },
+
+  appBar: {
+    calc: 'KALKULATOR',
+    cleaning: 'CZYSZCZENIE TO...',
+    order: 'ZAMÓWIENIE',
+    price: 'CENA',
+    faq: 'PYTANIA I ODPOWIEDZI',
   },
 
   intro: {
@@ -228,6 +238,10 @@ export default {
   price: {
     title: 'Nasze ceny',
     desc: 'Oferujemy usługi w zakresie sprzątania i czyszczenia jednorazowego , cyklicznego jak i długoterminowego.',
+    helpers: {
+      from: 'od',
+      item: 'szt',
+    },
   },
 
   order: {

@@ -2,7 +2,7 @@
 import clockYellowBg from '@/assets/img/clock-yellow-bg.png';
 import phoneYellowBg from '@/assets/img/phone-yellow-bg.png';
 import starYellowBg from '@/assets/img/star-yellow-bg.png';
-import { CONTACT_PHONE_NUMBER } from '@/constants/';
+import ActionBtn from '@/components/common/ActionBtn.vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import OrderStep from './OrderStep.vue';
@@ -28,7 +28,7 @@ const steps = computed(() =>
 
 <template>
   <v-row justify="center">
-    <v-col cols="11" lg="9" xl="7" class="d-flex flex-column">
+    <v-col cols="11" lg="9" xl="8" class="d-flex flex-column">
       <h1 class="text-center my-6 font-weight-medium">
         {{ $t('order.steps.title') }}
       </h1>
@@ -43,17 +43,7 @@ const steps = computed(() =>
       </v-row>
 
       <div class="d-flex justify-center my-5">
-        <a :href="`tel:${CONTACT_PHONE_NUMBER}`"
-          ><v-btn
-            color="primary"
-            rounded="xl"
-            size="x-large"
-            height="80"
-            width="240"
-            class="px-10 text-h6 font-weight-bold rounded-pill"
-            >{{ $t('cta.call') }}</v-btn
-          >
-        </a>
+        <action-btn></action-btn>
       </div>
     </v-col>
   </v-row>

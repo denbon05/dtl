@@ -13,9 +13,9 @@ import CleaningTips from '@/components/home/tips/CleaningTips.vue';
       <IntroCarousel />
 
       <ServicesCalc />
-      <AboutCleaning />
-      <AboutPrice class="my-6" />
-      <OrderSteps class="my-6" />
+      <AboutCleaning id="cleaning" />
+      <AboutPrice id="pricelist" class="my-6" />
+      <OrderSteps id="order" class="my-6" />
       <CleaningTips class="my-6" />
     </v-container>
   </v-lazy>

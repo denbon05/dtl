@@ -15,12 +15,24 @@ const additionalServicesPricelist = computed(() =>
     <div
       v-for="(service, idx) of additionalServicesPricelist"
       :key="`additional-service-item-${idx}`"
-      class="w-33 d-flex justify-center"
+      class="d-flex justify-center"
+      :class="{
+        'w-50': !$vuetify.display.lgAndUp,
+        'w-33': $vuetify.display.lgAndUp,
+      }"
     >
       <div class="w-75 mb-3">
         <div class="d-flex justify-space-between">
           <span>{{ service.title }}</span>
-          <span>{{ $n(service.price, 'currency') }} </span>
+          <span class="text-no-wrap">
+            <template v-if="service.isMinPrice">{{
+              $t('price.helpers.from')
+            }}</template>
+            {{ $n(service.price, 'currency') }}
+            <template v-if="service.isPerItem"
+              >/{{ $t('price.helpers.item') }}</template
+            >
+          </span>
         </div>
         <hr class="hr-fade" />
       </div>

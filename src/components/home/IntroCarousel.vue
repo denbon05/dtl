@@ -3,8 +3,10 @@ import balconyImg from '@/assets/img/intro-carousel-balcony.png';
 import glovesWithSofaImg from '@/assets/img/intro-carousel-gloves-with-sofa.png';
 import officeImg from '@/assets/img/intro-carousel-office.png';
 import windowImg from '@/assets/img/intro-carousel-window.png';
-import { CONTACT_PHONE_NUMBER } from '@/constants/';
+import ActionBtn from '@/components/common/ActionBtn.vue';
+import { onMounted, ref, toValue } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useDisplay } from 'vuetify';
 
 const { t } = useI18n();
 
@@ -30,16 +32,32 @@ const carouselItems = [
     alt: 'Yellow gloves cleaning the window',
   },
 ];
+
+// default value
+const carouselHeight = ref(64);
+const display = useDisplay();
+
+onMounted(() => {
+  const headerEl = document.querySelector('header');
+
+  if (headerEl) {
+    // compute dynamically carousel height
+    const visibleBottomSectionRangeInPx = 200;
+    const defaultCarouselItemHeight = 840;
+    // carousel height full height for lg and minus app bar height
+    carouselHeight.value = display.lgAndUp
+      ? toValue(display.height) -
+        (headerEl.offsetHeight + visibleBottomSectionRangeInPx)
+      : defaultCarouselItemHeight;
+  }
+});
 </script>
 
 <template>
   <v-row id="introCarousel" justify="center" align="center"
     ><v-col>
-      <!-- carousel height full height for lg and minus app bar height -->
       <v-carousel
-        :height="
-          $vuetify.display.lgAndUp ? $vuetify.display.height - (64 + 200) : 840
-        "
+        :height="carouselHeight"
         show-arrows="hover"
         cycle
         hide-delimiter-background
@@ -68,7 +86,7 @@ const carouselItems = [
 
             <div class="d-flex justify-end text-black mb-15 pb-2">
               <div class="d-flex justify-start bg-white-fade align-center w-45">
-                <p class="text-h5 font-weight-medium py-2 pl-7 pr-10">
+                <p class="text-h5 font-weight-medium py-2 pl-14 pr-10">
                   {{ item.info }}
                 </p>
               </div>
@@ -76,21 +94,9 @@ const carouselItems = [
           </section>
         </v-carousel-item>
 
-        <a
-          id="cta"
-          class="text-md-h2 text-deep-purple-accent-4"
-          :href="`tel:${CONTACT_PHONE_NUMBER}`"
-          ><v-btn
-            color="primary"
-            rounded="xl"
-            size="x-large"
-            class="px-10 text-h5"
-            >{{ $t('cta.call') }}</v-btn
-          >
-        </a>
-      </v-carousel>
-    </v-col></v-row
-  >
+        <action-btn></action-btn>
+      </v-carousel> </v-col
+  ></v-row>
 </template>
 
 <style lang="scss">

@@ -19,6 +19,12 @@
   "repository": {
     "url": "https://github.com/denbon05/dtl.git"
   },
+  "engines": {
+    "node": ">=18"
+  },
+  "os": [
+    "linux"
+  ],
   "dependencies": {
     "@intlify/unplugin-vue-i18n": "^1.5.0",
     "@xstate/vue": "^2.0.0",

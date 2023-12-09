@@ -2,6 +2,7 @@ import { fetchPriceList } from '@/api/pricelist';
 import type { PriceListByKey } from '@/types/api/pricelist';
 import { reactive, ref } from 'vue';
 
+// Keep default pricelist in case network issues.
 /** Default price list values */
 export const pricelistByKey = reactive<PriceListByKey>({
   initial: {
@@ -18,7 +19,7 @@ export const pricelistByKey = reactive<PriceListByKey>({
   },
   roomType: {
     bathroom: 150,
-    room: 100,
+    room: 50,
     kitchen: 150,
   },
   square: {
@@ -31,13 +32,12 @@ export const pricelistByKey = reactive<PriceListByKey>({
     },
   },
   additionalService: {
-    windowCleaning: {
-      price: 25,
-    },
+    windowCleaning: { isMinPrice: true, price: 25 },
     ovenCleaning: {
       price: 50,
     },
     kitchenCabinetCleaning: {
+      isPerItem: true,
       price: 10,
     },
     balconyCleaning: {
@@ -47,6 +47,7 @@ export const pricelistByKey = reactive<PriceListByKey>({
       price: 50,
     },
     radiatorCleaning: {
+      isPerItem: true,
       price: 20,
     },
     coffeeMachineCleaning: {

@@ -3,7 +3,9 @@ import fbLogo from '@/assets/img/fb-logo.png';
 import fitProjectLogo from '@/assets/img/fit-project-logo.png';
 import instagramLogo from '@/assets/img/instagram-logo.png';
 import telegramLogo from '@/assets/img/telegram-logo.png';
+import whatsAppLogo from '@/assets/img/whatsapp-icon-x50.png';
 import appLogo from '@/assets/img/app-logo-130x80.png';
+import ActionBtn from '@/components/common/ActionBtn.vue';
 import {
   FB_URL,
   FIT_PROJECT_EMAIL,
@@ -15,6 +17,7 @@ import {
   EXTRA_PHONE_NUMBER,
   CONTACT_EMAIL,
   FIT_PROJECT_URL,
+  WHATSAPP_URL,
 } from '@/constants/';
 
 const contacts = [
@@ -65,23 +68,13 @@ const contacts = [
               <span class="text-body-1 text-center">{{
                 $t('cta.consult')
               }}</span>
-              <a :href="`tel:${CONTACT_PHONE_NUMBER}`">
-                <v-btn
-                  color="primary"
-                  rounded="xl"
-                  size="x-large"
-                  height="60"
-                  width="230"
-                  class="my-3 text-h5 font-weight-black rounded-be-xl"
-                  >{{ $t('cta.call') }}</v-btn
-                ></a
-              >
+              <action-btn class="my-3"></action-btn>
             </div>
           </div>
         </v-col>
       </v-row>
 
-      <v-row justify="center" align="stretch" class="bg-app-yellow pa-2 mt-6">
+      <v-row justify="center" align="stretch" class="bg-app-yellow pa-2 mt-8">
         <v-col cols="3" class="d-flex justify-center">
           <div class="flex-column align-start">
             <div class="d-flex justify-start">
@@ -90,7 +83,11 @@ const contacts = [
                   class="text-center text-body-2 font-weight-black mb-4"
                   >{{ $t('partner.title') }}</strong
                 >
-                <span>{{ FIT_PROJECT_NUMBER }}</span>
+                <a
+                  :href="`tel:${FIT_PROJECT_NUMBER}`"
+                  class="text-decoration-none text-black"
+                  >{{ FIT_PROJECT_NUMBER }}</a
+                >
               </div>
               <a :href="FIT_PROJECT_URL" target="_blank">
                 <img
@@ -100,7 +97,11 @@ const contacts = [
                   alt="Green apple with text 'Fit Project' inside."
               /></a>
             </div>
-            <span>{{ FIT_PROJECT_EMAIL }}</span>
+            <a
+              class="text-decoration-none text-black text-no-wrap"
+              :href="`mailto:${FIT_PROJECT_EMAIL}`"
+              >{{ FIT_PROJECT_EMAIL }}</a
+            >
           </div>
         </v-col>
 
@@ -122,7 +123,7 @@ const contacts = [
         <v-spacer></v-spacer>
 
         <v-col align-self="center" cols="3">
-          <div class="d-flex">
+          <div class="d-flex justify-center">
             <a :href="INSTAGRAM_URL" target="_blank">
               <img
                 :src="instagramLogo"
@@ -130,11 +131,14 @@ const contacts = [
                 width="40"
                 class="mx-2"
             /></a>
+            <a :href="FB_URL" alt="Facebook logo." target="_blank">
+              <img :src="fbLogo" width="40" class="mx-2"
+            /></a>
             <a :href="TELEGRAM_URL" alt="Telegram logo." target="_blank">
               <img :src="telegramLogo" width="40" class="mx-2"
             /></a>
-            <a :href="FB_URL" alt="Facebook logo." target="_blank">
-              <img :src="fbLogo" width="40" class="mx-2"
+            <a :href="WHATSAPP_URL" alt="WhatsApp logo." target="_blank">
+              <img :src="whatsAppLogo" width="40" class="mx-2"
             /></a>
           </div>
         </v-col>

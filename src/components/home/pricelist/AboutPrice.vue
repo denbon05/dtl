@@ -4,7 +4,7 @@ import ServicePrices from './ServicePrices.vue';
 
 <template>
   <v-row justify="center">
-    <v-col cols="11" lg="9" xl="7" class="d-flex flex-column">
+    <v-col cols="11" lg="9" xl="8" class="d-flex flex-column">
       <h1 class="text-center mt-6 font-weight-medium">
         {{ $t('price.title') }}
       </h1>
