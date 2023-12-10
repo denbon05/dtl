@@ -59,6 +59,7 @@ watch(
           <v-text-field
             density="compact"
             variant="underlined"
+            autofocus
             flat
             hide-spin-buttons
             v-model="square"

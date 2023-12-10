@@ -82,7 +82,7 @@ const phonesStr = [
       </section>
     </v-col>
 
-    <v-col lg="4" xl="3" class="px-5 pl-lg-5"
+    <v-col lg="5" xl="3" class="px-5 pl-lg-5"
       ><OrderBill :calc="calc">
         <template v-if="calc.state.value.value === 'condoSelected'" #subtitle>{{
           $t('calc.order.subtitle')
