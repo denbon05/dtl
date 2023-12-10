@@ -5,7 +5,6 @@ import { usePriceList } from '@/composables/pricelist';
 import { CONTACT_PHONE_NUMBER } from '@/constants/';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import greenWave from '@/assets/img/green-wave.svg';
 import AdditionalServices from './AdditionalServices.vue';
 import RoomManager from './RoomManager.vue';
 import SquareManager from './SquareManager.vue';
@@ -35,8 +34,8 @@ const areRoomsSelected = computed(
 </script>
 
 <template>
-  <v-sheet id="servicesOrder" class="pt-5 pb-10 px-5 wave">
-    <section class="d-flex flex-column text-center">
+  <div id="orderBill">
+    <section class="d-flex flex-column text-center pt-7 pb-15 px-10">
       <h2>{{ $t('calc.order.title') }}</h2>
       <span class="my-3 mx-2 text-caption text-medium-emphasis">
         <slot name="subtitle"></slot
@@ -75,7 +74,6 @@ const areRoomsSelected = computed(
 
         <h4 class="text-subtitle-1 mt-4">{{ $t('calc.order.sum.title') }}:</h4>
         <h4 class="text-subtitle-1">
-          <!-- TODO https://vue-i18n.intlify.dev/guide/advanced/component#scope-resolving -->
           {{ $t('calc.order.sum.from') }}
           <span class="font-weight-black text-body-1">
             {{ $n(order.state.value.context.totalPrice, 'currency') }}
@@ -87,38 +85,28 @@ const areRoomsSelected = computed(
         {{ $t('calc.order.info') }}
       </p>
 
-      <a
-        class="text-h4 text-md-h2 text-deep-purple-accent-4"
-        :href="`tel:${CONTACT_PHONE_NUMBER}`"
-        ><v-btn
-          color="primary"
-          rounded="xl"
-          size="large"
-          class="px-10 pt-1 text-subtitle-1 font-weight-bold"
-          >{{ $t('cta.call') }}</v-btn
-        >
-      </a>
+      <div>
+        <a
+          class="text-h4 text-md-h2 text-deep-purple-accent-4"
+          :href="`tel:${CONTACT_PHONE_NUMBER}`"
+          ><v-btn
+            color="primary"
+            rounded="xl"
+            size="large"
+            class="px-10 mb-5 mt-2 text-subtitle-1 font-weight-bold"
+            >{{ $t('cta.call') }}</v-btn
+          >
+        </a>
+      </div>
     </section>
-    <img draggable="false" class="wave-bottom" :src="greenWave" />
-  </v-sheet>
+  </div>
 </template>
 
 <style lang="scss" scoped>
-#servicesOrder {
-  border: 0.3px solid;
-  border-color: rgb(var(--v-theme-primary));
-  border-bottom: none;
-  border-radius: 8px 8px 0 0;
-}
-
-.wave {
-  position: relative;
-
-  .wave-bottom {
-    position: absolute;
-    max-width: 100%;
-    bottom: -7.2px;
-    left: 0;
-  }
+#orderBill {
+  margin-top: -5px;
+  background-image: url('@/assets/img/bill-rectangle.svg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 </style>
