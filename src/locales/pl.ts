@@ -76,8 +76,14 @@ export default {
       office: 'Sprzątanie biura',
     },
     cleaning: {
-      basic: 'Podstawowe',
-      accurate: 'Dokładne',
+      basic: {
+        title: 'Podstawowe',
+        tip: 'Sprzątanie mieszkania składającego się z 1 pokoju i 1 łazienki , kuchni i korytarza',
+      },
+      accurate: {
+        title: 'Dokładne',
+        tip: 'To gruntowne i dokładne sprzątanie całego mieszkania czy domu, wymaga dużo czasu i wysiłku, ale pozwala na uzyskanie czystego i schludnego domu',
+      },
     },
     room: {
       bathroom: 'Łazienka',

@@ -14,6 +14,7 @@ export type CalcCategoryItem<
   {
     selected: boolean;
     icon?: string;
+    tip?: string;
   }
 >;
 

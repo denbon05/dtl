@@ -2,12 +2,11 @@
 import type { useCalcState } from '@/composables/calc';
 import type { ICleaningCoefficient } from '@/types/api/pricelist';
 import type { CalcCategoryItem } from '@/types/calc';
-import { watch } from 'vue';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const cleaningTypeByKey: CalcCategoryItem<'cleaningCoefficient'> = {
-  basic: { selected: false },
-  accurate: { selected: false },
+  basic: { selected: false, tip: '' },
+  accurate: { selected: false, tip: '' },
 };
 
 const { calc } = defineProps<{
@@ -46,9 +45,23 @@ watch(
         v-for="(cleaningType, cleaningTypeKey) of cleaningTypeByKey"
         :key="`cleaning-${cleaningTypeKey}`"
         class="text-no-wrap flex-0-1"
-        :label="$t(`service.cleaning.${cleaningTypeKey}`)"
         :value="cleaningTypeKey"
       >
+        <template v-slot:label>
+          <div class="d-flex align-start">
+            <span>{{ $t(`service.cleaning.${cleaningTypeKey}.title`) }}</span>
+            <v-btn size="x-small" variant="plain" class="px-0">
+              <v-icon icon="mdi:mdi-information-outline" color="info"> </v-icon>
+              <v-tooltip
+                activator="parent"
+                location="end"
+                max-width="300"
+                offset="2"
+                >{{ $t(`service.cleaning.${cleaningTypeKey}.tip`) }}.</v-tooltip
+              >
+            </v-btn>
+          </div>
+        </template>
       </v-radio>
     </v-radio-group>
   </div>

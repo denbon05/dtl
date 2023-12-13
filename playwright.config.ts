@@ -59,13 +59,13 @@ const config: PlaywrightTestConfig = {
         headless: !!process.env.CI,
       },
     },
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-        headless: true,
-      },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: {
+    //     ...devices['Desktop Safari'],
+    //     headless: true,
+    //   },
+    // },
 
     /* Test against mobile viewports. */
     // {

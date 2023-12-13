@@ -47,7 +47,7 @@ const phonesStr = [
 
 <template>
   <v-row justify="center" id="calc">
-    <v-col lg="8" class="text-center px-5">
+    <v-col lg="10" xl="8" class="text-center px-5">
       <h1 class="mt-8 mb-5 font-weight-medium" id="calcTitle">
         {{ $t('calc.title') }}
       </h1>
