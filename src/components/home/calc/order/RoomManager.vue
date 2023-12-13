@@ -40,7 +40,7 @@ const cleaningTitle = computed(() => {
   const { cleaningType } = order.state.value.context;
   // if cleaning type is selected show it in oder case show default title
   return cleaningType
-    ? t(`service.cleaning.${cleaningType}`)
+    ? t(`service.cleaning.${cleaningType}.title`)
     : t('calc.order.cleaning');
 });
 </script>
