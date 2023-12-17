@@ -1,7 +1,7 @@
 @import './fonts.scss';
 
 body {
-  font-family: 'Martel', sans-serif !important;
+  font-family: 'Poppins' !important;
   font-size: 16px;
   /* desktop only */
   min-width: 1024px;
@@ -10,8 +10,10 @@ body {
 h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
-  font-family: 'Krona One', sans-serif;
+h4 .text-h1,
+.text-h2,
+.text-h3,
+.text-h4 {
+  // specify fonts for all low lvl headers
+  font-family: 'Krona One', sans-serif !important;
 }

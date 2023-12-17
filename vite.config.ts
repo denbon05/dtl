@@ -34,16 +34,6 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       host: true,
-      proxy: {
-        '/assets/.*': {
-          headers: {
-            // cache static assets for a 3 days in prod
-            'Cache-Control': `public, max-age=0, s-maxage=${
-              isProd ? 259200 : 0
-            }`,
-          },
-        },
-      },
     },
   };
 });
