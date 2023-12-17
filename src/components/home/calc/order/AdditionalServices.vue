@@ -47,12 +47,10 @@ const updateAdditionalServiceAmountByKey = (
         :key="`additional-order-service-${service.key}`"
         class="d-flex flex-column"
       >
-        <v-row class="d-flex jma-0 pa-0">
-          <v-col cols="6" class="text-no-wrap text-body-1">{{
-            service.title
-          }}</v-col>
+        <v-row class="d-flex pa-0">
+          <v-col cols="6" class="text-body-1">{{ service.title }}</v-col>
 
-          <v-col cols="3" class="d-flex align-baseline justify-end mp-2">
+          <v-col cols="3" class="d-flex align-end justify-end mp-2">
             <v-btn
               icon="mdi:mdi-minus"
               variant="plain"
@@ -75,7 +73,7 @@ const updateAdditionalServiceAmountByKey = (
             >
             </v-btn>
           </v-col>
-          <v-col cols="3" class="d-flex justify-end">{{
+          <v-col cols="3" class="d-flex justify-end align-end">{{
             $n(service.price, 'currency')
           }}</v-col>
         </v-row>
