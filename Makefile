@@ -1,8 +1,8 @@
 ci:
 	npm run build
 	npm run lint
-	npm run test:e2e
 	npm run test:unit
+	npm run test:e2e
 
 start:
 	npm run dev

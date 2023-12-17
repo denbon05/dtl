@@ -234,9 +234,13 @@ export default {
       },
 
       other: {
-        balcony: 'sprzątanie balkonu',
-        afterRepair: 'sprzątanie po remoncie',
-        stairs: 'sprzątanie kliatek schodowych, domków letniskowych i domów',
+        basic: [
+          {
+            title: 'Sprzątanie kliatek schodowych, domków letniskowych i domów',
+          },
+          { title: 'Sprzątanie po remoncie' },
+          { title: 'Sprzątanie balkonu' },
+        ],
       },
     },
   },

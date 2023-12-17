@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import balconyImg from '@/assets/img/intro-carousel-balcony.png';
 import glovesWithSofaImg from '@/assets/img/intro-carousel-gloves-with-sofa.png';
 import officeImg from '@/assets/img/intro-carousel-office.png';
 import windowImg from '@/assets/img/intro-carousel-window.png';
+import vacuumImg from '@/assets/img/intro-vacuum.png';
 import ActionBtn from '@/components/common/ActionBtn.vue';
 import { onMounted, ref, toValue } from 'vue';
 import { useI18n } from 'vue-i18n';
@@ -17,9 +17,9 @@ const carouselItems = [
     alt: 'Yellow gloves with sofa',
   },
   {
-    src: balconyImg,
+    src: vacuumImg,
     info: t('intro.carousel.imgDescription.house'),
-    alt: 'Woman sweeps the balcony',
+    alt: 'Woman holding a vacuum',
   },
   {
     src: officeImg,
@@ -74,10 +74,12 @@ onMounted(() => {
             class="w-100 h-100 d-flex flex-column justify-space-between py-15 pb-lg-5"
           >
             <div class="d-flex justify-center bg-black-fade w-45 py-4">
-              <div class="d-flex flex-column text-white align-center text-wrap">
-                <span class="text-h2 font-weight-bold text-center mb-4"
-                  >{{ $t('intro.carousel.main.title') }}
-                </span>
+              <div
+                class="d-flex flex-column text-white align-center text-wrap py-2"
+              >
+                <h2 class="text-h2 font-weight-bold text-center mb-4">
+                  {{ $t('intro.carousel.main.title') }}
+                </h2>
                 <p class="text-h6 w-75">
                   {{ $t('intro.carousel.main.subtitle') }}
                 </p>
@@ -86,7 +88,7 @@ onMounted(() => {
 
             <div class="d-flex justify-end text-black mb-15 pb-2">
               <div class="d-flex justify-start bg-white-fade align-center w-45">
-                <p class="text-h5 font-weight-medium py-2 pl-14 pr-10">
+                <p class="text-h5 font-weight-regular py-3 pl-14 pr-10">
                   {{ item.info }}
                 </p>
               </div>

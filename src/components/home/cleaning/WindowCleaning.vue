@@ -8,7 +8,6 @@ import { useI18n } from 'vue-i18n';
 
 const { basics } = defineProps<{
   basics: IDescSection[];
-  advanced?: IDescSection[];
   height: number;
 }>();
 
@@ -51,15 +50,7 @@ const basicsWithPrice = computed<IDescSection[]>(() => {
 <template>
   <v-img :src="windowImg" :height="height" cover alt="Woman cleaning a window">
     <div class="w-50 d-flex flex-column mx-7 my-15 pr-7">
-      <DescriptionSection :items="basicsWithPrice">
-        <template #title>{{ $t('cleaning.services.header.basic') }}</template>
-      </DescriptionSection>
-
-      <DescriptionSection v-if="advanced?.length" :items="advanced">
-        <template #title>{{
-          $t('cleaning.services.header.accurate')
-        }}</template>
-      </DescriptionSection>
+      <DescriptionSection :items="basicsWithPrice"> </DescriptionSection>
     </div>
   </v-img>
 </template>

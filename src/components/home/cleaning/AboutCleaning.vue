@@ -34,15 +34,6 @@ const serviceKeys: (keyof LocaleMessages['cleaning']['services'])[] = [
 
 // keys are the same as in LocaleMessages['cleaning']['categories']
 const categories = serviceKeys.map((key, idx) => {
-  // there is different logic for `other`
-  if (key === 'other') {
-    return {
-      title: t(`cleaning.categories[${idx}]`),
-      key,
-      tabComponent: keyToComponent[key],
-    };
-  }
-
   const services = messages.cleaning.services[key];
 
   const basicServices: DescItems = (services.basic as DescItems).map(
@@ -74,7 +65,8 @@ const categories = serviceKeys.map((key, idx) => {
 // first item by default
 const tab = ref<(typeof categories)[number]['key']>(categories[0].key);
 
-const contentHeight = 760;
+const tabsHeight = 72;
+const imgContentHeight = 760;
 </script>
 
 <template>
@@ -88,8 +80,8 @@ const contentHeight = 760;
       </div>
 
       <!-- whole height = tab content + tabs height -->
-      <v-card :height="760 + 72" class="my-7">
-        <v-tabs height="72" v-model="tab" bg-color="secondary" grow>
+      <v-card :height="imgContentHeight + tabsHeight" class="my-7">
+        <v-tabs :height="tabsHeight" v-model="tab" bg-color="secondary" grow>
           <v-tab
             v-for="category of categories"
             :key="`cleaning-category-${category.key}`"
@@ -114,7 +106,7 @@ const contentHeight = 760;
             <component
               class="tab-item"
               :is="tabComponent"
-              :height="contentHeight"
+              :height="imgContentHeight"
               :basics="basicServices"
               :advanced="accurateServices"
             ></component>

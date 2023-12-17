@@ -8,7 +8,7 @@ defineProps<{
 
 <template>
   <div class="d-flex flex-column bg-fade-white desc-item pa-5 pl-8">
-    <h5 class="text-primary mb-5">
+    <h5 v-if="$slots.title" class="text-primary mb-5 desc-title">
       <slot name="title"></slot>
     </h5>
 
