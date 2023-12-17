@@ -1,6 +1,5 @@
 {
   "framework": "vite",
-  "nodeVersion": "18.x",
   "headers": [
     {
       "source": "/assets/(.*)",
