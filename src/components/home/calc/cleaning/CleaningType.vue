@@ -48,12 +48,21 @@ watch(
         :value="cleaningTypeKey"
       >
         <template v-slot:label>
-          <div class="d-flex align-start">
+          <div class="d-flex align-center">
             <span>{{ $t(`service.cleaning.${cleaningTypeKey}.title`) }}</span>
-            <v-btn size="x-small" variant="plain" class="px-0">
+            <v-btn
+              size="x-small"
+              width="18"
+              height="18"
+              variant="plain"
+              icon
+              class="mx-1 mb-4"
+            >
               <v-icon icon="mdi:mdi-information-outline" color="info"> </v-icon>
               <v-tooltip
                 activator="parent"
+                open-on-click
+                open-on-hover
                 location="end"
                 max-width="300"
                 offset="2"

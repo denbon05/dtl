@@ -43,11 +43,11 @@ jobs:
       - name: Run linter 👀
         run: npm run lint
 
-      - name: Run E2E tests
-        run: npm run test:e2e
-
       - name: Run unit tests
         run: npm run test:unit
+
+      - name: Run E2E tests
+        run: npm run test:e2e
 
       - uses: actions/upload-artifact@v3
         if: always()
