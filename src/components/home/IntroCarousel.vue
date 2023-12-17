@@ -77,7 +77,7 @@ onMounted(() => {
               <div
                 class="d-flex flex-column text-white align-center text-wrap py-2"
               >
-                <h2 class="text-h2 font-weight-bold text-center mb-4">
+                <h2 class="text-h3 font-weight-bold text-center mb-4">
                   {{ $t('intro.carousel.main.title') }}
                 </h2>
                 <p class="text-h6 w-75">
