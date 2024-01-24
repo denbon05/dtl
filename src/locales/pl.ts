@@ -215,7 +215,6 @@ export default {
           { title: 'Opróżnianie koszy na śmieci, wymiana worków.' },
           { title: 'Umycie luster oraz przeszkleń.' },
           { title: 'Wstawienie brudnych naczyń do zmywarki.' },
-          { title: 'Wstawienie brudnych naczyń do zmywarki.' },
           { title: 'Mycie drzwi szklanych, dezynfekcja klamek.' },
           { title: 'Uzupełnianie środków higienicznych.' },
           { title: 'Mycie okien.' },
