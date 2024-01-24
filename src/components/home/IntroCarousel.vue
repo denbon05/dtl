@@ -61,7 +61,7 @@ onMounted(() => {
         show-arrows="hover"
         cycle
         hide-delimiter-background
-        interval="8000"
+        interval="10000"
       >
         <v-carousel-item
           v-for="(item, idx) in carouselItems"
