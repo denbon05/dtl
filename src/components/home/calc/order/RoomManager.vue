@@ -47,12 +47,12 @@ const cleaningTitle = computed(() => {
 
 <template>
   <section id="oderRoomManger">
-    <h4 class="text-subtitle-1 d-flex justify-space-between">
+    <div class="text-subtitle-1 d-flex justify-space-between">
       <span>{{ cleaningTitle }}</span>
       <span v-if="order.state.value.context.cleaningType === 'accurate'"
         >x{{ pricelist.pricelistByKey.cleaningCoefficient.accurate }}</span
       >
-    </h4>
+    </div>
     <div class="d-flex flex-column">
       <div class="d-flex">
         <template v-for="roomTypeKey in roomTypeKeys" :key="roomTypeKey">

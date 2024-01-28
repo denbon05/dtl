@@ -11,12 +11,10 @@ import CleaningTips from '@/components/home/tips/CleaningTips.vue';
   <v-container fluid class="h-100 pa-0 ma-0">
     <IntroCarousel />
 
-    <!-- <v-lazy :options="{ threshold: 0 }" transition="fade-transition"> -->
     <ServicesCalc />
     <AboutCleaning id="cleaning" />
     <AboutPrice id="pricelist" class="my-6" />
     <OrderSteps id="order" class="my-6" />
     <CleaningTips class="my-6" />
-    <!-- </v-lazy> -->
   </v-container>
 </template>

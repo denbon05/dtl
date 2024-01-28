@@ -92,26 +92,28 @@ const imgContentHeight = 760;
           >
         </v-tabs>
 
-        <v-window v-model="tab">
-          <v-window-item
-            v-for="{
-              key,
-              tabComponent,
-              basicServices,
-              accurateServices,
-            } of categories"
-            :key="`cleaning-category-content-${key}`"
-            :value="key"
-          >
-            <component
-              class="tab-item"
-              :is="tabComponent"
-              :height="imgContentHeight"
-              :basics="basicServices"
-              :advanced="accurateServices"
-            ></component>
-          </v-window-item>
-        </v-window>
+        <v-lazy :options="{ threshold: 0 }" transition="fade-transition">
+          <v-window v-model="tab">
+            <v-window-item
+              v-for="{
+                key,
+                tabComponent,
+                basicServices,
+                accurateServices,
+              } of categories"
+              :key="`cleaning-category-content-${key}`"
+              :value="key"
+            >
+              <component
+                class="tab-item"
+                :is="tabComponent"
+                :height="imgContentHeight"
+                :basics="basicServices"
+                :advanced="accurateServices"
+              ></component>
+            </v-window-item>
+          </v-window>
+        </v-lazy>
       </v-card>
     </v-col>
   </v-row>

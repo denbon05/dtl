@@ -3,7 +3,7 @@ import fbLogo from '@/assets/img/fb-logo.png';
 import fitProjectLogo from '@/assets/img/fit-project-logo.png';
 import instagramLogo from '@/assets/img/instagram-logo.png';
 import telegramLogo from '@/assets/img/telegram-logo.png';
-import whatsAppLogo from '@/assets/img/whatsapp-icon-x50.png';
+import whatsAppLogo from '@/assets/img/whatsapp-logo.png';
 import appLogo from '@/assets/img/app-logo-130x80.png';
 import ActionBtn from '@/components/common/ActionBtn.vue';
 import {
@@ -133,28 +133,28 @@ const contacts = [
               <img
                 :src="instagramLogo"
                 :alt="$t('alt.logo.instagram')"
-                width="40"
+                width="35"
                 class="mx-2"
             /></a>
             <a :href="FB_URL" target="_blank">
               <img
                 :src="fbLogo"
                 :alt="$t('alt.logo.fb')"
-                width="40"
+                width="35"
                 class="mx-2"
             /></a>
             <a :href="TELEGRAM_URL" target="_blank">
               <img
                 :src="telegramLogo"
                 :alt="$t('alt.logo.telegram')"
-                width="40"
+                width="35"
                 class="mx-2"
             /></a>
             <a :href="WHATSAPP_URL" target="_blank">
               <img
                 :src="whatsAppLogo"
                 :alt="$t('alt.logo.whatsapp')"
-                width="40"
+                width="35"
                 class="mx-2"
             /></a>
           </div>
