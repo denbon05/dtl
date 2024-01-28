@@ -36,7 +36,7 @@ const areRoomsSelected = computed(
 <template>
   <div id="orderBill">
     <section class="d-flex flex-column text-center pt-7 pb-15 px-10">
-      <h2>{{ $t('calc.order.title') }}</h2>
+      <div class="text-h4">{{ $t('calc.order.title') }}</div>
       <span class="my-3 mx-2 text-caption text-medium-emphasis">
         <slot name="subtitle"></slot
       ></span>

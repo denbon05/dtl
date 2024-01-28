@@ -9,11 +9,13 @@ import {
   TELEGRAM_URL,
   WHATSAPP_URL,
 } from '@/constants/';
-import instagramIcon from '@/assets/img/instagram-icon-x25.png';
-import fbIcon from '@/assets/img/fb-icon-x25.png';
-import telegramIcon from '@/assets/img/telegram-icon-x25.png';
-import whatsappIcon from '@/assets/img/whatsapp-icon-x25.png';
+import instagramLogo from '@/assets/img/instagram-logo.png';
+import fbLogo from '@/assets/img/fb-logo.png';
+import telegramLogo from '@/assets/img/telegram-logo.png';
+import whatsappLogo from '@/assets/img/whatsapp-logo.png';
 import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
 
 const contacts = [
   { value: CONTACT_EMAIL, link: `mailto:${CONTACT_EMAIL}` },
@@ -23,24 +25,26 @@ const contacts = [
 ];
 const socMedias = [
   {
-    icon: instagramIcon,
+    icon: instagramLogo,
     link: INSTAGRAM_URL,
+    alt: t('alt.logo.instagram'),
   },
   {
-    icon: fbIcon,
+    icon: fbLogo,
     link: FB_URL,
+    alt: t('alt.logo.fb'),
   },
   {
-    icon: telegramIcon,
+    icon: telegramLogo,
     link: TELEGRAM_URL,
+    alt: t('alt.logo.telegram'),
   },
   {
-    icon: whatsappIcon,
+    icon: whatsappLogo,
     link: WHATSAPP_URL,
+    alt: t('alt.logo.whatsapp'),
   },
 ];
-
-const { t } = useI18n();
 
 const benchmarks = [
   { title: t('appBar.calc'), anchor: 'calc' },
@@ -81,7 +85,12 @@ const benchmarks = [
               :href="socMedia.link"
               target="_blank"
             >
-              <img :src="socMedia.icon" width="25" class="mx-1" />
+              <img
+                :src="socMedia.icon"
+                width="25"
+                class="mx-1"
+                :alt="socMedia.alt"
+              />
             </a>
           </div>
         </div>

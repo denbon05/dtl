@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import roomImg from '@/assets/img/room.png';
+import roomImg from '@/assets/img/room.webp';
 import type { IDescSection } from '@/types/components/cleaning-about';
 import DescriptionSection from './DescriptionSection.vue';
 
@@ -15,7 +15,7 @@ defineProps<{
     :src="roomImg"
     :height="height"
     cover
-    alt="Woman stands in a room with a mop"
+    :alt="$t('alt.img.roomCleaning')"
   >
     <div
       class="w-50 d-flex flex-column ma-10 pl-2 pr-7 h-75 justify-space-around"

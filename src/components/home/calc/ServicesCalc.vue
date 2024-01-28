@@ -48,9 +48,9 @@ const phonesStr = [
 <template>
   <v-row justify="center" id="calc">
     <v-col lg="10" xl="8" class="text-center px-5">
-      <h1 class="mt-8 mb-5 font-weight-medium" id="calcTitle">
+      <h2 class="mt-8 mb-5 font-weight-medium text-h4" id="calcTitle">
         {{ $t('calc.title') }}
-      </h1>
+      </h2>
       <p class="text-subtitle-1 text-left">
         {{
           $t('calc.description', {

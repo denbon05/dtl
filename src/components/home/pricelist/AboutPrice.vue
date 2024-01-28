@@ -8,7 +8,7 @@ import ServicePrices from './ServicePrices.vue';
       <h1 class="text-center mt-6 font-weight-medium">
         {{ $t('price.title') }}
       </h1>
-      <h4 class="text-h6 pl-12 my-12">{{ $t('price.desc') }}</h4>
+      <h5 class="text-h6 pl-12 my-12">{{ $t('price.desc') }}</h5>
 
       <service-prices></service-prices>
     </v-col>

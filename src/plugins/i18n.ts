@@ -7,6 +7,7 @@ const i18n = createI18n<LocaleMessages, 'pl'>({
   legacy: false,
   globalInjection: true, // make available t in template
   availableLocales: ['pl'],
+  fallbackLocale: 'pl',
   messages: {
     pl,
   },
