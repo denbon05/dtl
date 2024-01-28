@@ -286,6 +286,29 @@ export default {
     ],
   },
 
+  alt: {
+    logo: {
+      fb: 'Facebook logo',
+      whatsapp: 'WhatsApp logo',
+      instagram: 'Instagram logo',
+      telegram: 'Telegramm logo',
+      dtl: 'DTL logo',
+      fitProject: "Zielone jabłko z tekstem 'Fit Project' w środku",
+    },
+    img: {
+      bathroomCleaning: 'Sprzątanie łazienki',
+      kitchenCleaning: 'Sprzątanie kuchni',
+      officeCleaning: 'Sprzątanie biura',
+      otherCleaning: 'Sprzątanie, pakiety, dom, czysty pokój',
+      roomCleaning: 'Sprzątaczka stoi w pokoju z mopem',
+      windowCleaning: 'Sprzątaczka myje okno',
+      wardrobeCleaning: 'Sprzątaczka szafa z butami i ubraniami',
+      carpetCleaning: 'Szklanka mleka rozlana na szaro kolorowy dywan',
+      lightCleaning: 'Sprzątaczka sprząta kurz',
+      orderStep: 'Krok procesu zamawiania usługi sprzątania',
+    },
+  },
+
   partner: {
     title: 'Nasz partner',
   },

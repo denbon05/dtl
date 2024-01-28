@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import glovesWithSofaImg from '@/assets/img/intro-carousel-gloves-with-sofa.png';
-import officeImg from '@/assets/img/intro-carousel-office.png';
-import windowImg from '@/assets/img/intro-carousel-window.png';
-import vacuumImg from '@/assets/img/intro-vacuum.png';
+import glovesWithSofaImg from '@/assets/img/intro-carousel-gloves-with-sofa.webp';
+import officeImg from '@/assets/img/intro-carousel-office.webp';
+import windowImg from '@/assets/img/intro-carousel-window.webp';
+import vacuumImg from '@/assets/img/intro-vacuum.webp';
 import ActionBtn from '@/components/common/ActionBtn.vue';
 import { onMounted, ref, toValue } from 'vue';
 import { useI18n } from 'vue-i18n';

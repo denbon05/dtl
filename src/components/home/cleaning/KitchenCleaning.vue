@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import kitchenImg from '@/assets/img/kitchen.png';
+import kitchenImg from '@/assets/img/kitchen.webp';
 import type { IDescSection } from '@/types/components/cleaning-about';
 import DescriptionSection from './DescriptionSection.vue';
 
@@ -15,7 +15,7 @@ defineProps<{
     :src="kitchenImg"
     :height="height"
     cover
-    alt="Woman cleaning a kitchen"
+    :alt="$t('alt.img.kitchenCleaning')"
   >
     <div class="w-50 h-100 d-flex flex-column mx-10 pr-7 justify-space-around">
       <DescriptionSection :items="basics">

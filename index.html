@@ -17,6 +17,162 @@
     </script>
     <meta charset="UTF-8" />
     <title>Usługi Sprzątania</title>
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Service",
+        "serviceType": "Cleaning service",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "Dtl Taras Linichenko",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Broniewskiego 10",
+            "addressLocality": "Bielsko-Biala",
+            "addressRegion": "Silesian",
+            "postalCode": "43-300",
+            "addressCountry": "Poland"
+          },
+          "telephone": "+48575330380",
+          "priceRange": "$",
+          "image": [
+            "https://dtl.works/assets/intro-carousel-gloves-with-sofa-f9c81de1.webp",
+            "https://dtl.works/assets/room.webp"
+          ]
+        },
+        "name": "Usługi sprzątania Bielsko-Biała i okolicy",
+        "description": "Profesjonalne usługi sprzątania w Bielsko-Biała i okolicach.",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Silesian"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "USŁUGI SPRZĄTANIA Bielsko-Biała",
+          "itemListElement": [
+            {
+              "@type": "OfferCatalog",
+              "name": "Sprzątanie",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Sprzątanie domów"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Sprzątanie mieszkań"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Sprzątanie biur"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Mycie okien"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Czyszczenie dywanów"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Sprzątanie po remoncie"
+                  }
+                }
+              ]
+            },
+            {
+              "@type": "OfferCatalog",
+              "name": "One-time services",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Sprzątanie domów"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Sprzątanie mieszkań"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Sprzątanie biur"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Mycie okien"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Czyszczenie dywanów"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Sprzątanie po remoncie"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "image": [
+          "https://dtl.works/assets/intro-carousel-gloves-with-sofa-f9c81de1.webp",
+          "https://dtl.works/assets/room.webp"
+        ],
+        "url": "https://dtl.works/",
+        "geo": {
+          "latitude": 49.82036071925384,
+          "longitude": 19.05345517724697
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday"
+            ]
+          }
+        ]
+      }
+    </script>
     <link rel="icon" href="/favicon.svg" type="image/x-icon" />
     <!-- desktop view only -->
     <meta name="viewport" content="width=1024, user-scalable=yes" />
@@ -39,24 +195,6 @@
   </head>
   <body>
     <div id="app"></div>
-    <script type="application/ld+json">
-      {
-        "@context": "http://schema.org",
-        "@type": "LocalBusiness",
-        "name": "DTL",
-        "description": "Profesjonalne usługi sprzątania w Twoim regionie.",
-        "url": "https://dtl.works/",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Bielsko-Biała",
-          "addressLocality": "Bielsko-Biała",
-          "addressRegion": "Śląskie",
-          "postalCode": "43-300",
-          "addressCountry": "Polska"
-        },
-        "telephone": "+48575330380"
-      }
-    </script>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

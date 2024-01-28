@@ -50,7 +50,12 @@ const contacts = [
       <v-row justify="center" align="center">
         <v-col cols="6">
           <div class="d-flex flex-column align-center">
-            <img width="120" :src="appLogo" alt="'DTL' logo." class="my-2" />
+            <img
+              width="120"
+              :src="appLogo"
+              :alt="$t('alt.logo.dtl')"
+              class="my-2"
+            />
             <span class="text-body-1">{{ $t('main.desc') }}</span>
             <div class="d-flex my-5">
               <a
@@ -94,7 +99,7 @@ const contacts = [
                   :src="fitProjectLogo"
                   class="mx-3"
                   width="66"
-                  alt="Green apple with text 'Fit Project' inside."
+                  :alt="$t('alt.logo.fitProject')"
               /></a>
             </div>
             <a
@@ -127,18 +132,30 @@ const contacts = [
             <a :href="INSTAGRAM_URL" target="_blank">
               <img
                 :src="instagramLogo"
-                alt="Instagram logo"
+                :alt="$t('alt.logo.instagram')"
                 width="40"
                 class="mx-2"
             /></a>
-            <a :href="FB_URL" alt="Facebook logo." target="_blank">
-              <img :src="fbLogo" width="40" class="mx-2"
+            <a :href="FB_URL" target="_blank">
+              <img
+                :src="fbLogo"
+                :alt="$t('alt.logo.fb')"
+                width="40"
+                class="mx-2"
             /></a>
-            <a :href="TELEGRAM_URL" alt="Telegram logo." target="_blank">
-              <img :src="telegramLogo" width="40" class="mx-2"
+            <a :href="TELEGRAM_URL" target="_blank">
+              <img
+                :src="telegramLogo"
+                :alt="$t('alt.logo.telegram')"
+                width="40"
+                class="mx-2"
             /></a>
-            <a :href="WHATSAPP_URL" alt="WhatsApp logo." target="_blank">
-              <img :src="whatsAppLogo" width="40" class="mx-2"
+            <a :href="WHATSAPP_URL" target="_blank">
+              <img
+                :src="whatsAppLogo"
+                :alt="$t('alt.logo.whatsapp')"
+                width="40"
+                class="mx-2"
             /></a>
           </div>
         </v-col>

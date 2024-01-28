@@ -12,7 +12,7 @@ defineProps<{
 
     <div class="d-flex justify-center my-4">
       <div>
-        <v-img :src="img" width="100"></v-img>
+        <v-img :src="img" :alt="$t('alt.img.orderStep')" width="100"></v-img>
       </div>
     </div>
 

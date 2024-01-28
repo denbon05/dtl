@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import femaleClothesImg from '@/assets/img/female-clothes-and-shoes-in-a-boutique.png';
-import glassOfMilkImg from '@/assets/img/glass-of-milk-spilled-on-gray-color-carpet.png';
-import cleaningHomeImg from '@/assets/img/woman-cleaning-home.png';
+import femaleClothesImg from '@/assets/img/female-clothes-and-shoes-in-a-boutique.webp';
+import glassOfMilkImg from '@/assets/img/glass-of-milk-spilled-on-gray-color-carpet.webp';
+import cleaningHomeImg from '@/assets/img/woman-cleaning-home.webp';
 </script>
 
 <template>
@@ -30,7 +30,7 @@ import cleaningHomeImg from '@/assets/img/woman-cleaning-home.png';
           <v-img
             :src="femaleClothesImg"
             width="330"
-            alt="Female wardrobe with shoes and clothes."
+            :alt="$t('alt.img.wardrobeCleaning')"
           ></v-img>
         </div>
       </div>
@@ -40,7 +40,7 @@ import cleaningHomeImg from '@/assets/img/woman-cleaning-home.png';
           :src="glassOfMilkImg"
           width="330"
           class="float-left mr-6"
-          alt="Glass of milk spilled on gray color carpet."
+          :alt="$t('alt.img.carpetCleaning')"
         ></v-img>
         <!-- Show the third tip -->
         <p class="text-body-2">
@@ -49,9 +49,9 @@ import cleaningHomeImg from '@/assets/img/woman-cleaning-home.png';
 
         <v-img
           :src="cleaningHomeImg"
+          :alt="$t('alt.img.lightCleaning')"
           width="330"
           class="float-right mx-6 my-3"
-          alt="Woman cleaning home."
         ></v-img>
 
         <!-- Show the rest of the tips -->

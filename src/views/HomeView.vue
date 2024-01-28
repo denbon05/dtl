@@ -8,15 +8,15 @@ import CleaningTips from '@/components/home/tips/CleaningTips.vue';
 </script>
 
 <template>
-  <v-lazy :options="{ threshold: 0 }" transition="fade-transition">
-    <v-container fluid class="h-100 pa-0 ma-0">
-      <IntroCarousel />
+  <v-container fluid class="h-100 pa-0 ma-0">
+    <IntroCarousel />
 
-      <ServicesCalc />
-      <AboutCleaning id="cleaning" />
-      <AboutPrice id="pricelist" class="my-6" />
-      <OrderSteps id="order" class="my-6" />
-      <CleaningTips class="my-6" />
-    </v-container>
-  </v-lazy>
+    <!-- <v-lazy :options="{ threshold: 0 }" transition="fade-transition"> -->
+    <ServicesCalc />
+    <AboutCleaning id="cleaning" />
+    <AboutPrice id="pricelist" class="my-6" />
+    <OrderSteps id="order" class="my-6" />
+    <CleaningTips class="my-6" />
+    <!-- </v-lazy> -->
+  </v-container>
 </template>

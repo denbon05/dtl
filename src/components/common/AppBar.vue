@@ -15,6 +15,8 @@ import telegramIcon from '@/assets/img/telegram-icon-x25.png';
 import whatsappIcon from '@/assets/img/whatsapp-icon-x25.png';
 import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
+
 const contacts = [
   { value: CONTACT_EMAIL, link: `mailto:${CONTACT_EMAIL}` },
   { value: CONTACT_PHONE_NUMBER, link: `tel:${CONTACT_PHONE_NUMBER}` },
@@ -25,22 +27,24 @@ const socMedias = [
   {
     icon: instagramIcon,
     link: INSTAGRAM_URL,
+    alt: t('alt.logo.instagram'),
   },
   {
     icon: fbIcon,
     link: FB_URL,
+    alt: t('alt.logo.fb'),
   },
   {
     icon: telegramIcon,
     link: TELEGRAM_URL,
+    alt: t('alt.logo.telegram'),
   },
   {
     icon: whatsappIcon,
     link: WHATSAPP_URL,
+    alt: t('alt.logo.whatsapp'),
   },
 ];
-
-const { t } = useI18n();
 
 const benchmarks = [
   { title: t('appBar.calc'), anchor: 'calc' },
@@ -81,7 +85,12 @@ const benchmarks = [
               :href="socMedia.link"
               target="_blank"
             >
-              <img :src="socMedia.icon" width="25" class="mx-1" />
+              <img
+                :src="socMedia.icon"
+                width="25"
+                class="mx-1"
+                :alt="socMedia.alt"
+              />
             </a>
           </div>
         </div>

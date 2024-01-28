@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import windowImg from '@/assets/img/window.png';
+import windowImg from '@/assets/img/window.webp';
 import type { IDescSection } from '@/types/components/cleaning-about';
 import DescriptionSection from './DescriptionSection.vue';
 import { computed } from 'vue';
@@ -48,7 +48,12 @@ const basicsWithPrice = computed<IDescSection[]>(() => {
 </script>
 
 <template>
-  <v-img :src="windowImg" :height="height" cover alt="Woman cleaning a window">
+  <v-img
+    :src="windowImg"
+    :height="height"
+    cover
+    :alt="$t('alt.img.windowCleaning')"
+  >
     <div class="w-50 d-flex flex-column mx-7 my-15 pr-7">
       <DescriptionSection :items="basicsWithPrice"> </DescriptionSection>
     </div>
