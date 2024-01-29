@@ -8,9 +8,9 @@ import cleaningHomeImg from '@/assets/img/woman-cleaning-home.webp';
   <v-lazy :options="{ threshold: 0 }" transition="fade-transition">
     <v-row justify="center">
       <v-col cols="11" lg="9" xl="7" class="d-flex flex-column">
-        <h1 class="text-center my-6 font-weight-medium">
+        <h2 class="text-center my-6 font-weight-medium text-h4">
           {{ $t('tips.title') }}
-        </h1>
+        </h2>
 
         <p class="font-weight-bold mt-4 mb-7">{{ $t('tips.caption') }}:</p>
 

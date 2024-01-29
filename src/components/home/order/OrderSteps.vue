@@ -29,9 +29,9 @@ const steps = computed(() =>
 <template>
   <v-row justify="center">
     <v-col cols="11" lg="9" xl="8" class="d-flex flex-column">
-      <h1 class="text-center my-6 font-weight-medium">
+      <h2 class="text-center my-6 font-weight-medium text-h4">
         {{ $t('order.steps.title') }}
-      </h1>
+      </h2>
 
       <v-row class="d-flex justify-space-around mt-2 mb-5">
         <v-col cols="4" v-for="step of steps" :key="`order-step-${step.key}`">
