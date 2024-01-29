@@ -3,10 +3,7 @@ import { CONTACT_PHONE_NUMBER } from '@/constants/';
 </script>
 
 <template>
-  <a
-    id="cta"
-    class="text-deep-purple-accent-4"
-    :href="`tel:${CONTACT_PHONE_NUMBER}`"
+  <a class="cta text-deep-purple-accent-4" :href="`tel:${CONTACT_PHONE_NUMBER}`"
     ><v-btn
       color="primary"
       rounded="xl"
