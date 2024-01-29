@@ -76,7 +76,7 @@ const imgContentHeight = 760;
         <h1 class="text-center my-5 font-weight-medium">
           {{ $t('cleaning.title') }}
         </h1>
-        <h4 class="text-h6 px-2">{{ $t('cleaning.description') }}</h4>
+        <p class="text-h6 px-2">{{ $t('cleaning.description') }}</p>
       </div>
 
       <!-- whole height = tab content + tabs height -->
