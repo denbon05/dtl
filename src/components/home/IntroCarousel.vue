@@ -105,7 +105,7 @@ onMounted(() => {
 #introCarousel {
   position: relative;
 
-  #cta {
+  .cta {
     position: absolute;
     top: 15%;
     left: 85%;
