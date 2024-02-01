@@ -309,6 +309,14 @@ export default {
     },
   },
 
+  cookies: {
+    concern: {
+      desc: 'Ta witryna korzysta z plików cookie w celu analizy i poprawy komfortu użytkowania. Umożliwić?',
+      allow: 'Umożliwić',
+      deny: 'Zaprzeczyć',
+    },
+  },
+
   partner: {
     title: 'Nasz partner',
   },
