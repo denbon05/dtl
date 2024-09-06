@@ -56,7 +56,7 @@ watch(
       rounded
       class="calc-title mt-5 mb-3"
     >
-      <h3>{{ $t('calc.subtitle.room') }}</h3>
+      <h3>{{ $t('calc.subtitle.additional') }}</h3>
     </v-sheet>
 
     <div v-if="enabled">
